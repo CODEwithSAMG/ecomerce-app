@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { AiOutlineMinus, AiFillStar, AiOutlinePlus } from 'react-icons/ai';
 import { RiseLoader } from 'react-spinners';
 import { TbTruckDelivery, TbReplace } from 'react-icons/tb';
 import { MdSecurity } from 'react-icons/md';
 
 import { AppContext } from '../../context/ProductContext';
 import StarRating from '../StarRating';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 const API = 'https://fakestoreapi.com/products';
 
@@ -20,8 +20,6 @@ const ItemDetail = () => {
         getSingleProduct(`${API}/${updatedId + 1}`);
     }, []);
 
-    console.log(rating?.rate);
-
     return (
         <>
             <div className='product-detail-container'>
@@ -31,14 +29,11 @@ const ItemDetail = () => {
                         <img src={image} width={500} height={500} />
                     </div>
 
-                    {/* <div className='small-images-container'>
-    </div> */}
-
                     <div>
                         <h3>{title && title}</h3>
                         <div className='reviews'>
                             <StarRating rating={rating} />
-                            ({rating?.count})
+                            ({rating?.count} customer reviews)
                         </div>
 
                         <h6 className='product-detail-desc'>
@@ -46,7 +41,10 @@ const ItemDetail = () => {
                             {description}
                         </h6>
 
-                        <p>${price}</p>
+                        <div>
+                            MRP:
+                            ${price}
+                        </div>
 
                         <div className='quantity'>
                             <h4>Quantity:</h4>

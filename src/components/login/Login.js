@@ -21,7 +21,6 @@ const Login = () => {
                     password: '0lelplR',
                 })
             }).then((res) => {
-                console.log(res.json())
             })
         }
 

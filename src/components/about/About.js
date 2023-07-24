@@ -6,7 +6,7 @@ const About = () => {
     useEffect(() => {
         ssetData(data);
     }, [])
-    // console.log(data);
+    
     return (
         <div className='product_parent'>
             {data && data.map((val) => {

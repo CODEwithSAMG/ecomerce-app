@@ -13,7 +13,7 @@ const Products = () => {
     useEffect(() => {
         getData(API);
     }, []);
-    console.log(isLoading, "isloading products");
+
     return (
         <>
             {!isLoading ? (
