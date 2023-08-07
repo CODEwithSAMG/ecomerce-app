@@ -5,4 +5,5 @@ export { default as Footer } from "./footer/Footer";
 export { default as Products } from "./products/Products";
 export { default as ContactUs } from "./ContactUs";
 export { default as Header } from "./header/Header";
+export { default as Home } from "./home/Home";
 export { default as ItemDetail } from "./itemDetail/ItemDetail";

@@ -1,46 +1,39 @@
 import React, { useEffect, useContext } from 'react';
+import { FaListAlt } from "react-icons/fa"
 
-import { Cards, HeroBanner } from '../index';
 import { AppContext } from '../../context/ProductContext';
-
-import "./products.scss";
+import GridView from '../GridView';
+import ListView from "../ListView"
 
 const API = 'https://fakestoreapi.com/products';
 
 const Products = () => {
-    const { getData, isLoading, products } = useContext(AppContext);
+    const { getData, products, gridView } = useContext(AppContext);
+    console.log(gridView, "gridView");
 
     useEffect(() => {
         getData(API);
     }, []);
 
     return (
-        <>
-            {!isLoading ? (
-                <div style={{ position: "fixed", height: 300, top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
-                    {/* Replace the following div with your desired loading spinner */}
-                    <div>Loading...</div>
-                </div>
-            ) : (
-                <>
-                    <div style={{ padding: "20px 200px" }}>
-                        <HeroBanner />
-                    </div>
+        <div className='products'>
+            <div className='products_nthchild'>
 
-                    <div className='products_wrapper'>
-                        <h1>Best Selling Product</h1>
-                        <div className='app_container'>
-                            {products && products.map((curVal, id) => {
-                                const { category, image, price } = curVal;
-                                return (
-                                    <Cards key={id} id={id} category={category} image={image} price={price} />
-                                )
-                            })}
-                        </div>
-                    </div>
-                </>
-            )}
-        </>
+            </div>
+
+            <div>
+                <span>
+                    <FaListAlt />
+
+                </span>
+
+                {!gridView ?
+                    <GridView products={products} /> :
+                    <ListView products={products} />
+                }
+            </div>
+
+        </div>
     )
 }
 

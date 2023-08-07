@@ -7,6 +7,7 @@ const initialState = {
     products: [],
     singleProduct: {},
     isLoading: "true",
+    gridView: true
 }
 
 const AppProvider = ({ children }) => {
