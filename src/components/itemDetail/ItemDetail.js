@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { RiseLoader } from 'react-spinners';
 import { TbTruckDelivery, TbReplace } from 'react-icons/tb';
 import { MdSecurity } from 'react-icons/md';
 
@@ -11,13 +10,13 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 const API = 'https://fakestoreapi.com/products';
 
 const ItemDetail = () => {
-    const { getSingleProduct, singleProduct: { title, price, description, image, rating }, isLoading } = useContext(AppContext);
+    const { getSingleProduct, singleProduct: { title, price, description, image, rating } } = useContext(AppContext);
 
     const { id } = useParams();
     const updatedId = Number(id)
 
     useEffect(() => {
-        getSingleProduct(`${API}/${updatedId + 1}`);
+        getSingleProduct(`${API}/${updatedId}`);
     }, []);
 
     return (
@@ -36,10 +35,10 @@ const ItemDetail = () => {
                             ({rating?.count} customer reviews)
                         </div>
 
-                        <h6 className='product-detail-desc'>
+                        <span className='product-detail-desc'>
                             <h4>Details:</h4>
                             {description}
-                        </h6>
+                        </span>
 
                         <div>
                             MRP:

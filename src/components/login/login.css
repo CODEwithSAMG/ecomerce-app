@@ -16,6 +16,14 @@
   padding: 40px;
 }
 
+.logo {
+  background-image: url(/public/logo192.png);
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  margin: 0;
+}
+
 .form_box {
   position: relative;
   background: transparent !important;

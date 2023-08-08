@@ -3,11 +3,14 @@ import axios from 'axios';
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({
-        username: '',
+        firstName: '',
+        lastName: '',
         email: '',
+        phone: '',
+        message: '',
     });
 
-    const { username, email } = formData;
+    const { firstName, lastName, email, phone, message } = formData;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,78 +26,104 @@ const ContactUs = () => {
         try {
             await axios.post('http://localhost:5000/api/contact', formData);
             setFormData({
-                username: '',
+                firstName: '',
+                lastName: '',
                 email: '',
+                phone: '',
+                message: '',
             });
         } catch (error) {
             console.error('Error submitting form data:', error);
         }
-
-        console.log('Submitting form data:', formData); // Debugging
     };
 
     return (
         <>
-            <h3 className='contactus_title'> Feel Free to contact us</h3>
+            <h3 className='contactus_title'>Feel Free to Contact Us</h3>
 
             <div className='contactus_container'>
+                {/* Left Content */}
                 <div className='left_contact'>
-                    <img src="" alt="image" />
+                    <img src='' alt='Image' />
                 </div>
 
+                {/* Right Content */}
                 <div className='right_contact'>
                     <form onSubmit={handleSubmit}>
                         <div>
-                            <label>First Name:</label>
-                            <input className='input_items' name="username" type='text' placeholder='Enter Username' onChange={handleChange} value={username} autoComplete="off" />
+                            <label htmlFor='firstName'>First Name:</label>
+                            <input
+                                className='input_items'
+                                name='firstName'
+                                type='text'
+                                placeholder='Enter First Name'
+                                onChange={handleChange}
+                                value={firstName}
+                                autoComplete='off'
+                                required
+                            />
                         </div>
 
                         <div>
-                            <label>Last Name:</label>
-                            <input name="email" type='email' placeholder='Enter Email' onChange={handleChange} value={email} autoComplete="off" />
+                            <label htmlFor='lastName'>Last Name:</label>
+                            <input
+                                className='input_items'
+                                name='lastName'
+                                type='text'
+                                placeholder='Enter Last Name'
+                                onChange={handleChange}
+                                value={lastName}
+                                autoComplete='off'
+                                required
+                            />
                         </div>
 
                         <div>
-                            <label htmlFor="email">Email:</label>
-                            <input name="email" type='email' placeholder='Enter Email' onChange={handleChange} value={email} autoComplete="off" />
+                            <label htmlFor='email'>Email:</label>
+                            <input
+                                className='input_items'
+                                name='email'
+                                type='email'
+                                placeholder='Enter Email'
+                                onChange={handleChange}
+                                value={email}
+                                autoComplete='off'
+                                required
+                            />
                         </div>
 
                         <div>
-                            <label htmlFor="Email">Phone:</label>
-                            <input name="email" type='email' placeholder='Enter Email' onChange={handleChange} value={email} autoComplete="off" />
-                        </div>
-                        <div>
-                            <label htmlFor="Email">Phone:</label>
-                            <input name="email" type='email' placeholder='Enter Email' onChange={handleChange} value={email} autoComplete="off" />
-                        </div>
-                        <div>
-                            <label htmlFor="Email">Phone:</label>
-                            <input name="email" type='email' placeholder='Enter Email' onChange={handleChange} value={email} autoComplete="off" />
-                        </div>
-                        <div>
-                            <label htmlFor="Email">Phone:</label>
-                            <input name="email" type='email' placeholder='Enter Email' onChange={handleChange} value={email} autoComplete="off" />
-                        </div>
-                        <div>
-                            <label htmlFor="Email">Phone:</label>
-                            <input name="email" type='email' placeholder='Enter Email' onChange={handleChange} value={email} autoComplete="off" />
-                        </div>
-                        <div>
-                            <label htmlFor="Email">Phone:</label>
-                            <textarea name="email" type='textbox' placeholder='Enter Email' onChange={handleChange} value={email} autoComplete="off" />
+                            <label htmlFor='phone'>Phone:</label>
+                            <input
+                                className='input_items'
+                                name='phone'
+                                type='tel'
+                                placeholder='Enter Phone Number'
+                                onChange={handleChange}
+                                value={phone}
+                                autoComplete='off'
+                                required
+                            />
                         </div>
 
-                        <div style={{ width: "100%" }}>
+                        <div>
+                            <label htmlFor='message'>Message:</label>
+                            <textarea
+                                className='input_items'
+                                name='message'
+                                placeholder='Enter Your Message'
+                                onChange={handleChange}
+                                value={message}
+                                required
+                            />
+                        </div>
+
+                        <div style={{ width: '100%' }}>
                             <button type='submit'>Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
-
-
-            {/* <div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111235.35876205424!2d76.88172008783555!3d29.396485425497453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390dda457afbe651%3A0x41d3f6feacaa74d4!2sPanipat%2C%20Haryana!5e0!3m2!1sen!2sin!4v1691249560979!5m2!1sen!2sin" width="100%" height="450" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div> */}
         </>
     );
 };

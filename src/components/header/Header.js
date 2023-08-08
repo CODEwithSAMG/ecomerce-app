@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import "./Header.css";
 
 const Header = () => {
   return (
-    <nav className="navbar sticky-top flex w-100">
-
+    <header className="navbar">
       <Link className="linktohome" to="/">
         <p className="logo">
         </p>
@@ -13,20 +11,24 @@ const Header = () => {
           Ecommerce
         </h4>
       </Link>
+
       <ul className="ui_styles">
         <li className="list_items">
-          <Link to="/"> Home</Link>
+          <Link to="/" title="Home"> Home</Link>
         </li>
 
         <li className="list_items">
-          <Link to="/products"> Products</Link>
+          <Link to="/products" title="Products"> Products</Link>
         </li>
 
         <li>
-          <Link to='/contact'>Contact Us</Link>
+          <Link to='/contact' title="Contact Us">Contact Us</Link>
+        </li>
+        <li>
+          <Link to='/contact' title="Contact Us">Contact Us</Link>
         </li>
       </ul>
-    </nav >
+    </header>
   );
 };
 

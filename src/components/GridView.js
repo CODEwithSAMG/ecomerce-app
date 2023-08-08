@@ -1,12 +1,10 @@
 import React from 'react';
-import Cards from './card/Cards';
-
+import { Cards } from './index';
 
 const GridView = ({ products }) => {
     return (
         <div className='products_wrapper'>
-            <h1>Products</h1>
-            <div>
+            <div className='product_page_container'>
                 {products && products.map((curVal, id) => {
                     const { category, image, price } = curVal;
 
@@ -19,4 +17,4 @@ const GridView = ({ products }) => {
     )
 }
 
-export default GridView
+export default GridView;

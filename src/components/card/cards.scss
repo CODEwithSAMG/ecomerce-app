@@ -11,9 +11,11 @@
   transition: transform 0.5s ease;
   display: flex;
   flex-direction: column;
-  border-radius: 18px;
-  border: 1px solid;
-  margin: 45px;
+  border-radius: 6px;
+  margin: 20px 45px;
+  box-shadow: 1px 1px 14px gray;
+  background: #efeeee;
+  gap: 10px;
 }
 
 .product_card:hover {

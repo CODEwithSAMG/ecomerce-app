@@ -7,12 +7,13 @@ const StarRating = ({ rating }) => {
     const hasHalfStar = rating?.rate % 1 !== 0; // Check if there is a half star (e.g., 3.7 -> true)
 
     const ratingStars = Array.from({ length: 5 }, (_, index) => {
-        if (index < fullStars) {
-            return <FaStar key={index} />;
-        } else if (hasHalfStar && index === fullStars) {
-            return <FaStarHalfAlt key={index} />;
-        } else {
-            return <AiOutlineStar key={index} />;
+        switch (true) {
+            case index < fullStars:
+                return <FaStar key={index} />;
+            case hasHalfStar && index === fullStars:
+                return <FaStarHalfAlt key={index} />;
+            default:
+                return <AiOutlineStar key={index} />;
         }
     });
 

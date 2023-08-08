@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import "./app.scss";
-import "./globals.scss";
-import { Cards, ContactUs, Footer, Header, HeroBanner, ItemDetail, Products, Home } from './components';
-const App = () => {
+import './globals.scss';
 
+const Home = lazy(() => import('./components/home/Home'));
+const Products = lazy(() => import('./components/products/Products'));
+const ItemDetail = lazy(() => import('./components/itemDetail/ItemDetail'));
+const ContactUs = lazy(() => import('./components/ContactUs'));
+const Footer = lazy(() => import('./components/footer/Footer'));
+const Header = lazy(() => import('./components/header/Header'));
+
+const App = () => {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route exact path="/item/:id" element={<ItemDetail />} />
-        <Route exact path='/contact' element={<ContactUs />} />
-      </Routes>
-      <Footer />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/item/:id" element={<ItemDetail />} />
+          <Route path='/contact' element={<ContactUs />} />
+        </Routes>
+        <Footer />
+      </Suspense>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

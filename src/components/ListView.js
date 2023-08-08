@@ -1,15 +1,27 @@
-import React from 'react';
-import Cards from './card/Cards';
+import { NavLink } from 'react-router-dom';
 
 const ListView = ({ products }) => {
+
     return (
-        <div className='products_wrapper'>
-            <h1>Products</h1>
-            <div>
-                {products && products.map((curVal, id) => {
-                    const { category, image, price } = curVal;
+        <div className='listview_warpper'>
+            <div className='listview_container'>
+                {products && products.map((curElem) => {
+                    const { description, id, image, price, title } = curElem;
+
                     return (
-                        <Cards key={id} id={id} category={category} image={image} price={price} />
+                        <div key={id} className='custom-grid card'>
+                            <figure><img width={250} height={250} src={image} alt="" /></figure>
+
+                            <div className='card-data'>
+                                <h3>{title}</h3>
+                                <p>$ {price}</p>
+                                <p>{description.slice(0, 130)}....</p>
+
+                                <NavLink to={`/item/${id - 1}`}>
+                                    <button className='btn'>Read More</button>
+                                </NavLink>
+                            </div>
+                        </div>
                     )
                 })}
             </div>

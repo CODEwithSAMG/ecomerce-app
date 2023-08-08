@@ -26,9 +26,15 @@ const ProductReducer = (state, action) => {
                 isError: false,
             };
 
+        case "gridView":
+            return {
+                ...state,
+                gridView: action.payload,
+            };
+
         default:
             return state;
     }
-}
+};
 
 export default ProductReducer;
