@@ -6,8 +6,12 @@ import { ListView, GridView } from "../../components";
 const API = 'https://fakestoreapi.com/products';
 
 const Products = () => {
-    const { getData, products, gridView, dispatch } = useContext(AppContext);
     const [selectedSortOption, setSelectedSortOption] = useState('');
+
+    const { getData, products, gridView, dispatch, filters: { text }, updateFilterValues } = useContext(AppContext);
+
+
+    const ViewComponent = gridView ? ListView : GridView;
 
     const toggleGridView = () => {
         dispatch({ type: 'gridView', payload: !gridView });
@@ -29,10 +33,31 @@ const Products = () => {
             case 'z to a':
                 return b.title.localeCompare(a.title);
             default:
+                return 0;
         }
     });
 
-    const ViewComponent = gridView ? ListView : GridView;
+    // Filter the products based on the input text
+    const filteredProducts = sortedProducts.filter(product =>
+        product.title.toLowerCase().includes(text.toLowerCase())
+    );
+
+    const getUniqueData = (data) => {
+        let newValue = data.map((val) => {
+            return val.category
+        })
+
+        return newValue = ["All", ...new Set(newValue)]
+    }
+
+    const categoryData = getUniqueData(products);
+
+    const onHandleCLickCategory = (val) => {
+        console.log(val.category)
+        if (val.category === "All") {
+            return
+        }
+    }
 
     useEffect(() => {
         getData(API);
@@ -41,7 +66,13 @@ const Products = () => {
     return (
         <div className='products'>
             <div className='products_nthchild'>
-                sdfsd
+                <input name="text" type="text" placeholder='Search' onChange={updateFilterValues} value={text} />
+
+                {categoryData.map((val) => {
+                    return <div style={{ display: "flex", fontSize: "2rem" }}>
+                        <div onClick={onHandleCLickCategory}>{val}</div>
+                    </div>
+                })}
             </div>
 
             <div className='products_nthchild2'>
@@ -55,10 +86,10 @@ const Products = () => {
                         </button>
                     </div>
 
-                    <h4>{sortedProducts.length} Products Available</h4>
+                    <h4>{filteredProducts.length} Products Available</h4>
 
                     <div>
-                        <select style={{ padding: 6 }} value={selectedSortOption} onChange={handleSortChange}>
+                        <select style={{ padding: 6, fontSize: "1rem", fontWeight: 500 }} value={selectedSortOption} onChange={handleSortChange}>
                             <option value='sort to high'>Price (lowest)</option>
                             <option value='sort to low'>Price (highest)</option>
                             <option value='a to z'>A to Z</option>
@@ -67,7 +98,7 @@ const Products = () => {
                     </div>
                 </div>
 
-                <ViewComponent products={sortedProducts} />
+                <ViewComponent products={filteredProducts} />
             </div>
         </div>
     );

@@ -3,27 +3,18 @@ const ProductReducer = (state, action) => {
         case "single_prod_error":
             return {
                 ...state,
-                isError: true,
-            };
-
-        case "isLoading":
-            return {
-                ...state,
-                isLoading: action.payload,
             };
 
         case "products":
             return {
                 ...state,
                 products: action.payload,
-                isError: false,
             };
 
         case "singleProduct":
             return {
                 ...state,
                 singleProduct: action.payload,
-                isError: false,
             };
 
         case "gridView":
@@ -32,6 +23,15 @@ const ProductReducer = (state, action) => {
                 gridView: action.payload,
             };
 
+        case 'update_filter_value':
+            const { name, value } = action.payload;
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    [name]: value,
+                },
+            };
         default:
             return state;
     }

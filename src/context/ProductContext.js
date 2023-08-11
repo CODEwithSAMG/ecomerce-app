@@ -6,8 +6,10 @@ const AppContext = createContext();
 const initialState = {
     products: [],
     singleProduct: {},
-    isLoading: true,
-    gridView: true
+    gridView: true,
+    filters: {
+        text: ""
+    }
 };
 
 const AppProvider = ({ children }) => {
@@ -39,8 +41,15 @@ const AppProvider = ({ children }) => {
         }
     };
 
+    const updateFilterValues = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        return dispatch({ type: "update_filter_value", payload: { name, value } })
+    }
+
     return (
-        <AppContext.Provider value={{ ...state, getSingleProduct, getData, dispatch }}>
+        <AppContext.Provider value={{ ...state, getSingleProduct, getData, dispatch, updateFilterValues }}>
             {children}
         </AppContext.Provider>
     );
