@@ -24,9 +24,9 @@ const Header = () => {
         <li>
           <Link to='/contact' title="Contact Us">Contact Us</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to='/contact' title="Contact Us">Contact Us</Link>
-        </li>
+        </li> */}
       </ul>
     </header>
   );
