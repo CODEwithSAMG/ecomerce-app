@@ -4,32 +4,47 @@ import axios from 'axios';
 const ContactUs = () => {
     const [form, setForm] = useState({
         name: '',
+        lname: '',
         email: '',
-        password: ''
+        phone: '',
+        textbox: ''
     });
-    const { name, email, password } = form;
+    const { name, lname, email, phone, textbox } = form;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setForm({
-            ...form,
-            [name]: value,
-        });
+
+        setForm((prevState) => ({
+            ...prevState,
+            [name]: value
+        }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/demo', form)
-            .then((res) => {
-                // console.log(res.data);
-            })
-            .catch((error) => {
-                console.log('Error submitting form data:', error);
-            });
+
+        if (form) {
+            axios
+                .post('http://localhost:5000/demo', form)
+                .then((res) => {
+                    console.log(res.data);
+                })
+                .catch((error) => {
+                    console.log('Error submitting form data:', error);
+                });
+        }
+
+        setForm({
+            name: '',
+            lname: '',
+            email: '',
+            phone: '',
+            textbox: ''
+        });
     };
 
     return (
-        <>
+        <div style={{ marginTop: "50px" }}>
             <h3 className='contactus_title'>Feel Free to Contact Us</h3>
             <div className='contactus_container'>
                 <div className='left_contact'>
@@ -37,50 +52,83 @@ const ContactUs = () => {
                 </div>
 
                 <div className='right_contact'>
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <div>
+                            <label>First Name:</label>
                             <input
                                 className='input_items'
                                 name='name'
                                 type='text'
                                 placeholder='Enter First Name'
                                 onChange={handleChange}
-                                value={name} // Bind the input value to the state
+                                value={name}
                                 autoComplete='off'
                                 required
                             />
                         </div>
+
                         <div>
+                            <label>Last Name:</label>
+                            <input
+                                className='input_items'
+                                name='lname'
+                                type='text'
+                                placeholder='Enter Last Name'
+                                onChange={handleChange}
+                                value={lname}
+                                autoComplete='off'
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <label>Email Address:</label>
                             <input
                                 className='input_items'
                                 name='email'
                                 type='email'
-                                placeholder='Enter Email'
+                                placeholder='Enter your Email Address'
                                 onChange={handleChange}
-                                value={email} // Bind the input value to the state
+                                value={email}
                                 autoComplete='off'
                                 required
                             />
                         </div>
+
                         <div>
+                            <label>Phone Number:</label>
                             <input
                                 className='input_items'
-                                name='password'
-                                type='password'
+                                name='phone'
+                                type='phone'
                                 placeholder='Enter phone number'
                                 onChange={handleChange}
-                                value={password}
+                                value={phone}
                                 autoComplete='off'
                                 required
                             />
                         </div>
-                        <div style={{ width: '100%' }}>
-                            <button type='submit'>Submit</button>
+
+                        <div className='text_style'>
+                            <label>Text:</label>
+                            <textarea
+                                className='input_items'
+                                name='textbox'
+                                placeholder='Enter text'
+                                onChange={handleChange}
+                                value={textbox}
+                                autoComplete='off'
+                                required
+                            />
                         </div>
                     </form>
+
+                    <div>
+                        <button type='submit' onClick={handleSubmit}>Submit</button>
+                    </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

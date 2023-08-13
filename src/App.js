@@ -8,17 +8,19 @@ const ItemDetail = lazy(() => import('./components/itemDetail/ItemDetail'));
 const ContactUs = lazy(() => import('./components/ContactUs'));
 const Footer = lazy(() => import('./components/footer/Footer'));
 const Header = lazy(() => import('./components/header/Header'));
+const About = lazy(() => import('./components/about/About'));
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>suspend...</div>}>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/item/:id" element={<ItemDetail />} />
           <Route path='/contact' element={<ContactUs />} />
+          <Route path='/about' element={<About />} />
         </Routes>
         <Footer />
       </Suspense>

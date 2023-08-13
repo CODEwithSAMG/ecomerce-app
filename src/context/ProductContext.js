@@ -15,18 +15,6 @@ const initialState = {
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const getData = async (api) => {
-        dispatch({ type: "isLoading", payload: true });
-        try {
-            const response = await fetch(api);
-            const jsonProducts = await response.json();
-            dispatch({ type: "products", payload: jsonProducts });
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        } finally {
-            dispatch({ type: "isLoading", payload: false });
-        }
-    };
 
     const getSingleProduct = async (api) => {
         try {
@@ -49,7 +37,7 @@ const AppProvider = ({ children }) => {
     }
 
     return (
-        <AppContext.Provider value={{ ...state, getSingleProduct, getData, dispatch, updateFilterValues }}>
+        <AppContext.Provider value={{ ...state, getSingleProduct, dispatch, updateFilterValues }}>
             {children}
         </AppContext.Provider>
     );
