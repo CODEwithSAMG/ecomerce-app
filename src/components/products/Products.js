@@ -2,14 +2,15 @@ import React, { useEffect, useState, useContext } from 'react';
 import { BsFillGridFill, BsList } from 'react-icons/bs';
 import { AppContext } from '../../context/ProductContext';
 import { ListView, GridView } from "../../components";
-
-const API = 'https://fakestoreapi.com/products';
+import { LoadingSpinner } from '../../UI/LoadingSpinner';
 
 const Products = () => {
+    const [products, setProducts] = useState([]);
     const [selectedSortOption, setSelectedSortOption] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const { getData, products, gridView, dispatch, filters: { text }, updateFilterValues } = useContext(AppContext);
-
+    const { gridView, dispatch, filters: { text }, updateFilterValues } = useContext(AppContext);
 
     const ViewComponent = gridView ? ListView : GridView;
 
@@ -21,7 +22,30 @@ const Products = () => {
         setSelectedSortOption(e.target.value);
     };
 
-    // Filter and sort the products based on the selected option
+    const fetchData = async (api) => {
+        try {
+            const response = await fetch(api);
+            const parsedData = await response.json();
+            setProducts(parsedData);
+        } catch (error) {
+            setError(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchData("https://fakestoreapi.com/products");
+    }, []);
+
+    if (isLoading) {
+        return <span><LoadingSpinner /></span>;
+    }
+
+    if (error) {
+        return <span>Error: {error.message}</span>;
+    }
+
     const sortedProducts = [...products].sort((a, b) => {
         switch (selectedSortOption) {
             case 'sort to high':
@@ -37,13 +61,12 @@ const Products = () => {
         }
     });
 
-    // Filter the products based on the input text
     const filteredProducts = sortedProducts.filter(product =>
         product.title.toLowerCase().includes(text.toLowerCase())
     );
 
     const getUniqueData = (data) => {
-        let newValue = data.map((val) => {
+        let newValue = data && data?.map((val) => {
             return val.category
         })
 
@@ -53,23 +76,19 @@ const Products = () => {
     const categoryData = getUniqueData(products);
 
     const onHandleCLickCategory = (val) => {
-        console.log(val.category)
-        if (val.category === "All") {
-            return
+        console.log(val.target)
+        if (val.category === "jewelery") {
+            return val
         }
     }
-
-    useEffect(() => {
-        getData(API);
-    }, []);
 
     return (
         <div className='products'>
             <div className='products_nthchild'>
                 <input name="text" type="text" placeholder='Search' onChange={updateFilterValues} value={text} />
 
-                {categoryData.map((val) => {
-                    return <div style={{ display: "flex", fontSize: "2rem" }}>
+                {categoryData.map((val, key) => {
+                    return <div key={key} style={{ display: "flex", fontSize: "2rem" }}>
                         <div onClick={onHandleCLickCategory}>{val}</div>
                     </div>
                 })}

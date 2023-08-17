@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './globals.scss';
+// import Login from './components/Login';
 
 const Home = lazy(() => import('./components/home/Home'));
 const Products = lazy(() => import('./components/products/Products'));
@@ -9,11 +10,13 @@ const ContactUs = lazy(() => import('./components/ContactUs'));
 const Footer = lazy(() => import('./components/footer/Footer'));
 const Header = lazy(() => import('./components/header/Header'));
 const About = lazy(() => import('./components/about/About'));
+const AddItem = lazy(() => import('./components/AddItem'));
+const Login = lazy(() => import("./components/Login"))
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>suspend...</div>}>
+      <Suspense fallback={""}>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -21,6 +24,8 @@ const App = () => {
           <Route path="/item/:id" element={<ItemDetail />} />
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/about' element={<About />} />
+          <Route path='/addItem' element={<AddItem />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
         <Footer />
       </Suspense>

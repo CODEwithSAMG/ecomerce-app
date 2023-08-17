@@ -1,33 +1,41 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="navbar">
-      <Link className="linktohome" to="/">
-        <p className="logo">
-        </p>
-
-        <h4>
-          Ecommerce
-        </h4>
+      <Link to="/">
+        <h4>Ecommerce</h4>
       </Link>
 
       <ul className="ui_styles">
         <li className="list_items">
-          <Link to="/" title="Home"> Home</Link>
+          <NavLink exact to="/" title="Home" activeClassName="active">
+            Home
+          </NavLink>
         </li>
 
         <li className="list_items">
-          <Link to="/products" title="Products"> Products</Link>
+          <NavLink to="/products" title="Products" activeClassName="active">
+            Products
+          </NavLink>
         </li>
 
         <li>
-          <Link to='/contact' title="Contact Us">Contact Us</Link>
+          <NavLink to='/contact' title="Contact Us" activeClassName="active">
+            Contact Us
+          </NavLink>
         </li>
 
         <li>
-          <Link to='/about' title="Contact Us">About</Link>
+          <NavLink to='/about' title="About" activeClassName="active">
+            About
+          </NavLink>
         </li>
+
+        <NavLink to='/login' title="Login">
+          <button className="login_btn">Login</button>
+        </NavLink>
       </ul>
     </header>
   );

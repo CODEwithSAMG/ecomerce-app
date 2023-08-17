@@ -1,6 +1,6 @@
 import Cards from "../card/Cards";
 
-export const ProductList = ({ products }) => (
+export const HomeProductList = ({ products }) => (
     <div className='products_wrapper'>
         <h1>Best Selling Products</h1>
         <div className='app_container'>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { LoadingSpinner } from '../../UI/LoadingSpinner';
-import { ProductList } from './ProductList';
+import { HomeProductList } from './HomeProductList';
 
 import { HeroBanner } from '../index';
 
@@ -28,10 +28,12 @@ const Home = () => {
         <>
             {loading ? <LoadingSpinner /> : (
                 <>
-                    <div style={{ padding: "20px 200px" }}>
+                    <div style={{ padding: "20px 150px" }}>
                         <HeroBanner />
+                        <br />
+                        <br />
                     </div>
-                    <ProductList products={apiData} />
+                    <HomeProductList products={apiData} />
                 </>
             )}
         </>

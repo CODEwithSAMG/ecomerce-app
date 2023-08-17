@@ -1,28 +1,47 @@
-import { useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { TbTruckDelivery, TbReplace } from 'react-icons/tb';
 import { MdSecurity } from 'react-icons/md';
 
 import { AppContext } from '../../context/ProductContext';
 import StarRating from '../StarRating';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { LoadingSpinner } from '../../UI/LoadingSpinner';
 
 const API = 'https://fakestoreapi.com/products';
 
 const ItemDetail = () => {
-    const { getSingleProduct, singleProduct: { title, price, description, image, rating } } = useContext(AppContext);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const { dispatch, singleProduct: { title, price, description, image, rating } } = useContext(AppContext);
 
     const { id } = useParams();
     const updatedId = Number(id)
+
+    const getSingleProduct = async (api) => {
+        try {
+            const response = await fetch(api);
+            const jsonSingleProduct = await response.json();
+            dispatch({ type: "singleProduct", payload: jsonSingleProduct });
+        } catch (error) {
+            console.error("Error fetching single product:", error);
+            dispatch({ type: "single_prod_error" });
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
         getSingleProduct(`${API}/${updatedId}`);
     }, []);
 
-    return (
-        <>
-            <div className='product-detail-container'>
+    if (isLoading) {
+        return <div><LoadingSpinner /></div>;
+    }
 
+
+    return (
+            <div className='product-detail-container'>
                 <div className='product-detail-wrapper'>
                     <div>
                         <img src={image} width={500} height={500} />
@@ -85,9 +104,12 @@ const ItemDetail = () => {
                             </div>
                         </div>
 
-                        <button className='add-to-cart'>
-                            Add To Cart
-                        </button>
+                        <Link to="/addItem">
+                            <button className='add-to-cart'>
+                                Add To Cart
+                            </button>
+                        </Link>
+
                         <button className='buy-now'>
                             Buy Now
                         </button>
@@ -95,7 +117,6 @@ const ItemDetail = () => {
 
                 </div>
             </div>
-        </>
     );
 }
 

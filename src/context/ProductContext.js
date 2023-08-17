@@ -4,7 +4,7 @@ import reducer from "../reducer/ProductReducer";
 const AppContext = createContext();
 
 const initialState = {
-    products: [],
+    // products: [],
     singleProduct: {},
     gridView: true,
     filters: {
@@ -15,20 +15,6 @@ const initialState = {
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-
-    const getSingleProduct = async (api) => {
-        try {
-            const response = await fetch(api);
-            const jsonSingleProduct = await response.json();
-            dispatch({ type: "singleProduct", payload: jsonSingleProduct });
-        } catch (error) {
-            console.error("Error fetching single product:", error);
-            dispatch({ type: "single_prod_error" });
-        } finally {
-            dispatch({ type: "isLoading", payload: false });
-        }
-    };
-
     const updateFilterValues = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -37,7 +23,7 @@ const AppProvider = ({ children }) => {
     }
 
     return (
-        <AppContext.Provider value={{ ...state, getSingleProduct, dispatch, updateFilterValues }}>
+        <AppContext.Provider value={{ ...state, dispatch, updateFilterValues }}>
             {children}
         </AppContext.Provider>
     );

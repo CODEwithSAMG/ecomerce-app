@@ -1,10 +1,5 @@
 const ProductReducer = (state, action) => {
     switch (action.type) {
-        case "single_prod_error":
-            return {
-                ...state,
-            };
-
         case "products":
             return {
                 ...state,

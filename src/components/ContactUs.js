@@ -44,7 +44,9 @@ const ContactUs = () => {
     };
 
     return (
-        <div style={{ marginTop: "50px" }}>
+        <div
+            style={{ margin: "40px" }}
+        >
             <h3 className='contactus_title'>Feel Free to Contact Us</h3>
             <div className='contactus_container'>
                 <div className='left_contact'>
