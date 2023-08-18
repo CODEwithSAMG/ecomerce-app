@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import './cards.scss';
 
 const Cards = ({ id, category, image, price }) => {
 
@@ -7,7 +6,7 @@ const Cards = ({ id, category, image, price }) => {
         <div className='product'>
             <NavLink style={{ textDecoration: 'none' }} to={`/item/${id}`}>
                 <div className={`product_card`}>
-                    <img src={image} className='product_image' width={300} height={320} alt={category} />
+                    <img src={image} className='product_image' width={300} height={320} alt={category} loading="lazy" />
                     <h3>{category}</h3>
                     <h3>$ {price}</h3>
                 </div>

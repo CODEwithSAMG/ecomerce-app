@@ -1,41 +1,43 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="navbar">
       <Link to="/">
-        <h4>Ecommerce</h4>
+        <h4 className="font_style_purple">
+          <b className="font-bold">&lt;/&gt;</b>
+          Apna Bazza</h4>
       </Link>
 
       <ul className="ui_styles">
         <li className="list_items">
-          <NavLink exact to="/" title="Home" activeClassName="active">
+          <Link to="/" title="Home" >
             Home
-          </NavLink>
+          </Link>
         </li>
 
         <li className="list_items">
-          <NavLink to="/products" title="Products" activeClassName="active">
+          <Link to="/products" title="Products" >
             Products
-          </NavLink>
+          </Link>
         </li>
 
         <li>
-          <NavLink to='/contact' title="Contact Us" activeClassName="active">
+          <Link to='/contact' title="Contact Us" >
             Contact Us
-          </NavLink>
+          </Link>
         </li>
 
         <li>
-          <NavLink to='/about' title="About" activeClassName="active">
+          <Link to='/about' title="About" >
             About
-          </NavLink>
+          </Link>
         </li>
 
-        <NavLink to='/login' title="Login">
+        <Link to='/login' title="Login">
           <button className="login_btn">Login</button>
-        </NavLink>
+        </Link>
       </ul>
     </header>
   );

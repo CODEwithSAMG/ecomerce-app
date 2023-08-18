@@ -1,0 +1,15 @@
+.left_contact {
+  width: 45%;
+  transform: scale(1.2);
+  background-image: url(/public/contact.jpg);
+  background-size: cover;
+}
+
+.login_left_img {
+  width: 45%;
+  transform: scale(1.2);
+  border-radius: 12px;
+  box-shadow: 0px 0px 50px gray;
+  background-image: url(/public/loginpage.jpg);
+  background-size: cover;
+}

@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { BsFillGridFill, BsList } from 'react-icons/bs';
 import { AppContext } from '../../context/ProductContext';
 import { ListView, GridView } from "../../components";
+
+import { TopLoader } from '../../UI/TopLoader';
+import { BsFillGridFill, BsList } from 'react-icons/bs';
 import { LoadingSpinner } from '../../UI/LoadingSpinner';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [selectedSortOption, setSelectedSortOption] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const [progress, setProgress] = useState(0);
     const { gridView, dispatch, filters: { text }, updateFilterValues } = useContext(AppContext);
 
     const ViewComponent = gridView ? ListView : GridView;
@@ -23,14 +24,15 @@ const Products = () => {
     };
 
     const fetchData = async (api) => {
+        setProgress(20);
+
         try {
             const response = await fetch(api);
             const parsedData = await response.json();
             setProducts(parsedData);
+            setProgress(100);
         } catch (error) {
             setError(error);
-        } finally {
-            setIsLoading(false);
         }
     };
 
@@ -38,12 +40,16 @@ const Products = () => {
         fetchData("https://fakestoreapi.com/products");
     }, []);
 
-    if (isLoading) {
-        return <span><LoadingSpinner /></span>;
-    }
-
     if (error) {
         return <span>Error: {error.message}</span>;
+    }
+
+    if (products.length === 0) {
+        return (
+            <div style={{ height: "84vh" }}>
+                <LoadingSpinner />
+            </div>
+        );
     }
 
     const sortedProducts = [...products].sort((a, b) => {
@@ -68,29 +74,33 @@ const Products = () => {
     const getUniqueData = (data) => {
         let newValue = data && data?.map((val) => {
             return val.category
-        })
+        });
 
-        return newValue = ["All", ...new Set(newValue)]
-    }
+        return ["All", ...new Set(newValue)];
+    };
 
     const categoryData = getUniqueData(products);
 
     const onHandleCLickCategory = (val) => {
-        console.log(val.target)
+        console.log(val.target);
         if (val.category === "jewelery") {
-            return val
+            return val;
         }
-    }
+    };
 
     return (
         <div className='products'>
+            <TopLoader progress={progress} setProgress={setProgress} />
+
             <div className='products_nthchild'>
                 <input name="text" type="text" placeholder='Search' onChange={updateFilterValues} value={text} />
 
-                {categoryData.map((val, key) => {
-                    return <div key={key} style={{ display: "flex", fontSize: "2rem" }}>
-                        <div onClick={onHandleCLickCategory}>{val}</div>
-                    </div>
+                {categoryData?.map((val, key) => {
+                    return (
+                        <div key={key} style={{ display: "flex", fontSize: "2rem" }}>
+                            <div onClick={onHandleCLickCategory}>{val}</div>
+                        </div>
+                    );
                 })}
             </div>
 

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import "../App.css"
 const ContactUs = () => {
     const [form, setForm] = useState({
         name: '',
@@ -44,13 +45,13 @@ const ContactUs = () => {
     };
 
     return (
-        <div
-            style={{ margin: "40px" }}
-        >
-            <h3 className='contactus_title'>Feel Free to Contact Us</h3>
+        <>
+            <h2 className='contactus_title'>Feel Free to Contact Us</h2>
             <div className='contactus_container'>
                 <div className='left_contact'>
-                    <img src='' alt='Image' />
+                    <LazyLoadImage
+                        width="100%" height="100%"
+                        effect="blur" loading="eager" />
                 </div>
 
                 <div className='right_contact'>
@@ -119,8 +120,7 @@ const ContactUs = () => {
                                 placeholder='Enter text'
                                 onChange={handleChange}
                                 value={textbox}
-                                autoComplete='off'
-                                required
+                                rows="4"
                             />
                         </div>
                     </form>
@@ -130,7 +130,7 @@ const ContactUs = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

@@ -4,7 +4,6 @@ import reducer from "../reducer/ProductReducer";
 const AppContext = createContext();
 
 const initialState = {
-    // products: [],
     singleProduct: {},
     gridView: true,
     filters: {
