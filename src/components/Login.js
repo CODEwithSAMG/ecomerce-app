@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { LoginSpinner } from "../UI/LoginSPinner";
 import ReCAPTCHA from "react-google-recaptcha";
 
+import "react-toastify/dist/ReactToastify.css";
 import "../App.css"
 
 const TEST_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
@@ -43,10 +43,6 @@ const Login = () => {
             toast.error("An error occurred. Please try again later.");
         }
     };
-
-    function onChange (value) {
-        console.log("Captcha value:", value);
-    }
 
     return (
         <div className="login_wrapper">
@@ -100,7 +96,7 @@ const Login = () => {
 
                 <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 25 }}>
                     <>---------------------</>
-                    <Link to="/">Or Sign up</Link>
+                    <Link to="/signup">Or Sign up</Link>
                     <>---------------------</>
                 </div>
 

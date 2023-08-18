@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './globals.scss';
+import Signup from './components/Signup';
 // import Login from './components/Login';
 
 const Home = lazy(() => import('./components/home/Home'));
@@ -26,6 +27,7 @@ const App = () => {
           <Route path='/about' element={<About />} />
           <Route path='/addItem' element={<AddItem />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
         </Routes>
         <Footer />
       </Suspense>

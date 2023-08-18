@@ -38,6 +38,10 @@ const Header = () => {
         <Link to='/login' title="Login">
           <button className="login_btn">Login</button>
         </Link>
+
+        <Link to="/signup">
+          <button className="signup_btn">Signup</button>
+        </Link>
       </ul>
     </header>
   );

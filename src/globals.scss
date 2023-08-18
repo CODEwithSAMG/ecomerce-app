@@ -839,8 +839,6 @@ a {
   width: 100%;
 }
 
-
-
 .contactus_title {
   text-align: center;
   margin: 1rem;
@@ -1034,8 +1032,6 @@ figure {
   display: flex;
   min-height: 67vh;
 
-
-
   .login_form {
     width: 50%;
     padding: 4rem;
@@ -1142,6 +1138,19 @@ figure {
   text-align: center;
   padding: 1rem 5rem;
   box-shadow: 1px 1px 10px gainsboro;
+}
+
+.signup_btn {
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 700;
+  margin: 0 10px;
+  padding: 10px 20px;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+  font-size: 1rem;
+  color: white;
+  background-color: rgba(104, 85, 224, 1);
+  border: 1px solid rgba(104, 85, 224, 1);
 }
 
 @media screen and (max-width: 800px) {
