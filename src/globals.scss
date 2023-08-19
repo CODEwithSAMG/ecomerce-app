@@ -1,25 +1,5 @@
-.p_2_80 {
-  padding: 2px 12rem;
-}
-
 ::-webkit-scrollbar {
-  width: 10px;
-  background-color: hsl(0, 2%, 88%);
-}
-
-::-webkit-scrollbar-thumb {
-  background: white;
-  border: 1px solid rgb(211, 211, 211);
-  border-radius: 50px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-span.text-red {
-  -webkit-text-stroke: 1px #f02d34;
-  margin-left: 6px;
+  display: none;
 }
 
 html,
@@ -52,10 +32,10 @@ a {
   align-items: center;
   position: sticky;
   top: 0;
-  background-color: #f8f8f8;
+  background-color: white;
   width: 100%;
-  z-index: 9999;
-  padding: 1rem 5rem;
+  z-index: 100;
+  padding: 0.6rem 18.4rem;
   box-shadow: 1px 1px 10px gainsboro;
 }
 
@@ -76,26 +56,18 @@ a {
 .ui_styles {
   display: flex;
   margin: 0;
-}
 
-.ui_styles li {
-  list-style: none;
-  padding: 0.5rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(104, 85, 224);
-}
-
-.ui_styles li:hover {
-  background-image: linear-gradient(to right, #ff4d4d, #ff8080);
-  border-radius: 8px;
+  li {
+    list-style: none;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgb(104, 85, 224);
+  }
 }
 
 .ui_styles li:hover a {
-  color: white;
+  color: blue;
 }
 
 .ui_styles li .icon {
@@ -173,12 +145,10 @@ a {
 
 .products {
   display: flex;
-  margin-top: 6rem;
-  width: 70%;
-  margin: 4rem auto;
+  padding: 4rem 19rem;
 
   .products_nthchild {
-    text-align: end;
+    text-align: start;
 
     input {
       padding: 5px 18px;
@@ -195,9 +165,7 @@ a {
     .product_jthchild {
       display: flex;
       justify-content: space-between;
-      transform: scale(1);
-      margin: 0em 4rem;
-      padding: 6px;
+      margin-left: 2.6rem;
 
       .sort-btn {
         border: none;
@@ -236,9 +204,6 @@ a {
   transition: transform 0.5s ease;
 }
 
-.product-name {
-  font-weight: 500;
-}
 .product-price {
   font-weight: 800;
   margin-top: 6px;
@@ -250,16 +215,9 @@ a {
   background-color: #dcdcdc;
   border-radius: 15px;
   position: relative;
-  height: 500px;
-  line-height: 0.9;
+  height: 60vh;
   width: 100%;
-  transition: 800ms all ease-in-out;
-  transform: scale(1);
   margin-top: 5rem;
-
-  &:hover {
-    transform: scale(1.1, 1.1);
-  }
 }
 
 .hero-banner-container .beats-solo {
@@ -290,19 +248,13 @@ a {
   font-size: 4rem;
   margin-top: 4px;
 }
-.hero-banner-container h1 {
-  color: white;
-  font-size: 10em;
-  margin-left: -20px;
-  text-transform: uppercase;
-}
 
 .hero-banner-image {
-  position: absolute;
-  top: -21%;
-  right: 14%;
-  width: 62%;
-  height: 117%;
+  position: absolute !important;
+  top: -214px;
+  /* width: 500px; */
+  height: 500px;
+  left: 32rem;
 }
 
 .desc {
@@ -316,10 +268,11 @@ a {
   color: #324d67;
 }
 .desc p {
-  color: #5f5f5f;
-  font-weight: 100;
+  color: black;
+  font-weight: 400;
   text-align: end;
 }
+
 .desc h5 {
   margin-bottom: 12px;
   font-weight: 700;
@@ -471,12 +424,7 @@ a {
   display: flex;
   gap: 30px;
 }
-.product .cart-product-image {
-  width: 180px;
-  height: 150px;
-  border-radius: 15px;
-  background-color: #ebebeb;
-}
+
 .item-desc .flex {
   display: flex;
   justify-content: space-between;
@@ -533,10 +481,17 @@ a {
 
 .product-detail-container {
   display: flex;
-  margin-top: 10rem;
   color: #324d67;
-  padding: 10px 150px;
+  padding: 4rem;
+  margin: 4.4rem 250px;
   justify-content: center;
+  box-shadow: 1px 1px 5px rgb(234, 234, 234);
+  border-radius: 10px;
+}
+
+.product-detail-wrapper {
+  display: flex;
+  gap: 80px;
 }
 
 .product-detail-image {
@@ -744,6 +699,7 @@ a {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  gap: 34px;
 }
 
 .product-data-warranty {
@@ -769,11 +725,6 @@ a {
       padding-top: 0.4rem;
     }
   }
-}
-
-.product-detail-wrapper {
-  display: flex;
-  gap: 60px;
 }
 
 .reviews {
@@ -897,14 +848,8 @@ a {
 }
 
 .products_wrapper {
-  justify-content: center;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  padding: 0px 80px;
+  margin-top: 5rem;
 
   h1 {
     font-weight: bolder;
@@ -915,13 +860,6 @@ a {
 
 .cart_icon {
   font-size: 1.5rem;
-}
-
-.custom-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 1em 5rem;
-  padding: 6px;
 }
 
 figure {
@@ -947,20 +885,30 @@ figure {
     transition: all 0.4s linear;
   }
 
-  .lagyy {
+  .list_view_img {
     max-width: 90%;
     margin-top: 1.5rem;
     height: 15rem;
   }
 
-  &:hover .lagyy {
+  &:hover .list_view_img {
     transform: scale(1.1);
-    transition: all 500ms ease-in-out !important;
+    transition: all 300ms ease-in !important;
   }
+}
+
+.left_contact {
+  width: 600px;
+  transform: scale(1.2);
+  background-size: cover;
 }
 
 .card {
   border: 0.1rem solid rgb(170 170 170 / 40%);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 2em 0 1rem 3rem;
+  padding: 12px;
 
   .card-data {
     padding: 0 2rem;
@@ -1089,39 +1037,15 @@ figure {
 .product_card {
   cursor: pointer;
   transform: scale(1, 1);
-  transition: transform 0.5s ease;
+  transition: 700ms ease-in-out;
   display: flex;
   flex-direction: column;
   border-radius: 6px;
-  margin: 20px 45px;
-  box-shadow: 1px 1px 14px gray;
-  background: #efeeee;
-  gap: 10px;
-}
+  gap: 6px;
 
-.product_card:hover {
-  transform: scale(1.1, 1.1);
-}
-
-.product_image {
-  transform: scale(1, 1);
-  transition: transform 0.5s ease;
-  padding: 20px;
-}
-
-.product .cart-product-image {
-  width: 180px;
-  height: 150px;
-  border-radius: 15px;
-}
-
-.product .cart-product-image {
-  width: 25%;
-  height: 25%;
-}
-
-.product-name {
-  font-weight: 500;
+  &:hover {
+    transform: scale(1.1, 1.1);
+  }
 }
 
 .del_btn {
@@ -1151,6 +1075,50 @@ figure {
   color: white;
   background-color: rgba(104, 85, 224, 1);
   border: 1px solid rgba(104, 85, 224, 1);
+}
+
+/* About Us page */
+.about-us-container {
+  padding: 2rem 19rem;
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  margin-bottom: 4rem;
+}
+
+.about-us-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-us-paragraph {
+  line-height: 1.5;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding-top: 4rem;
+}
+
+.hero-heading {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  color: rgb(104, 85, 224);
+  margin-bottom: 10px;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
 }
 
 @media screen and (max-width: 800px) {

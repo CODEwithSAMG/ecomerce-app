@@ -7,11 +7,12 @@ import { AppContext } from '../../context/ProductContext';
 import StarRating from '../StarRating';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
+import { TopLoader } from "../../UI/TopLoader";
+
 const API = 'https://fakestoreapi.com/products';
 
 const ItemDetail = () => {
-    const [isLoading, setIsLoading] = useState(true);
-
+    const [progress, setProgress] = useState(0)
     const { dispatch, singleProduct: { title, price, description, image, rating } } = useContext(AppContext);
 
     const { id } = useParams();
@@ -19,30 +20,32 @@ const ItemDetail = () => {
 
     const getSingleProduct = async (api) => {
         try {
-            const response = await fetch(api);
+            const response = await fetch(`${api}/${updatedId}`);
             const jsonSingleProduct = await response.json();
             dispatch({ type: "singleProduct", payload: jsonSingleProduct });
         } catch (error) {
             console.error("Error fetching single product:", error);
             dispatch({ type: "single_prod_error" });
         } finally {
-            setIsLoading(false);
+            setProgress(100);
         }
     };
 
     useEffect(() => {
-        getSingleProduct(`${API}/${updatedId}`);
-    }, []);
+        getSingleProduct(API);
+    });
 
     return (
         <div className='product-detail-container'>
             <div className='product-detail-wrapper'>
                 <div>
-                    <img src={image} width={500} height={500} />
+                    <img src={image} width={500} height={500} alt='product_image' />
                 </div>
+                <div style={{ borderLeft: "1px solid RGB(255, 255, 247)" }}>
 
+                </div>
                 <div>
-                    <h3>{title && title}</h3>
+                    <h3>{title}</h3>
                     <div className='reviews'>
                         <StarRating rating={rating} />
                         ({rating?.count} customer reviews)
@@ -108,8 +111,9 @@ const ItemDetail = () => {
                         Buy Now
                     </button>
                 </div>
-
             </div>
+
+            <TopLoader progress={progress} setProgress={setProgress} />
         </div>
     );
 }

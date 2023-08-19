@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useEffect, useState } from 'react';
+import { TopLoader } from '../UI/TopLoader';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import "../App.css"
+
+
 const ContactUs = () => {
+    const [progress, setProgress] = useState(0);
     const [form, setForm] = useState({
         name: '',
         lname: '',
@@ -10,6 +14,7 @@ const ContactUs = () => {
         phone: '',
         textbox: ''
     });
+
     const { name, lname, email, phone, textbox } = form;
 
     const handleChange = (e) => {
@@ -24,17 +29,6 @@ const ContactUs = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (form) {
-            axios
-                .post('http://localhost:5000/demo', form)
-                .then((res) => {
-                    console.log(res.data);
-                })
-                .catch((error) => {
-                    console.log('Error submitting form data:', error);
-                });
-        }
-
         setForm({
             name: '',
             lname: '',
@@ -44,15 +38,24 @@ const ContactUs = () => {
         });
     };
 
+    useEffect(() => {
+        setProgress(100)
+    }, [])
+
+
     return (
         <>
+            <TopLoader progress={progress} setProgress={setProgress} />
+
             <h2 className='contactus_title'>Feel Free to Contact Us</h2>
-            <div className='contactus_container'>
-                <div className='left_contact'>
-                    <LazyLoadImage
-                        width="100%" height="100%"
-                        effect="blur" loading="eager" />
-                </div>
+
+            <section className='contactus_container'>
+                <LazyLoadImage
+                    className='left_contact'
+                    src="contact.webp"
+                    alt="contact img"
+                />
+
 
                 <div className='right_contact'>
                     <form>
@@ -129,7 +132,7 @@ const ContactUs = () => {
                         <button type='submit' onClick={handleSubmit}>Submit</button>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     );
 };

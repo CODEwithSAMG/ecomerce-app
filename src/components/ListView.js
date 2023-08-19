@@ -14,7 +14,7 @@ const ListView = ({ products }) => {
                         <div key={id} className='custom-grid card'>
                             <figure>
                                 <LazyLoadImage
-                                    className='lagyy'
+                                    className='list_view_img'
                                     src={image}
                                     width={250}
                                     height={250}

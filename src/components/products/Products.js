@@ -24,8 +24,6 @@ const Products = () => {
     };
 
     const fetchData = async (api) => {
-        setProgress(20);
-
         try {
             const response = await fetch(api);
             const parsedData = await response.json();
@@ -89,10 +87,10 @@ const Products = () => {
     };
 
     return (
-        <div className='products'>
+        <section className='products'>
             <TopLoader progress={progress} setProgress={setProgress} />
 
-            <div className='products_nthchild'>
+            <section className='products_nthchild'>
                 <input name="text" type="text" placeholder='Search' onChange={updateFilterValues} value={text} />
 
                 {categoryData?.map((val, key) => {
@@ -102,9 +100,9 @@ const Products = () => {
                         </div>
                     );
                 })}
-            </div>
+            </section>
 
-            <div className='products_nthchild2'>
+            <section className='products_nthchild2'>
                 <div className='product_jthchild'>
                     <div>
                         <button className={gridView ? "active sort-btn" : "sort-btn"} onClick={toggleGridView}>
@@ -128,8 +126,8 @@ const Products = () => {
                 </div>
 
                 <ViewComponent products={filteredProducts} />
-            </div>
-        </div>
+            </section>
+        </section>
     );
 };
 

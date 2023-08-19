@@ -1,9 +1,4 @@
-.left_contact {
-  width: 45%;
-  transform: scale(1.2);
-  background-image: url(/public/contact.jpg);
-  background-size: cover;
-}
+
 
 .login_left_img {
   width: 45%;

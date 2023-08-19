@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -6,12 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 import "../App.css"
 
 import "../App.css"
-import { LoginSpinner } from "../UI/LoginSPinner";
 
 const TEST_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
 const Signup = () => {
-    const [isLoading, setIsLoading] = useState(false);
 
     return (
         <div className="login_wrapper">
@@ -60,8 +57,8 @@ const Signup = () => {
                     />
                 </div>
 
-                <button className="isloading_spinner mt_4" disabled={isLoading}>
-                    {isLoading ? <><LoginSpinner /> Signup </> : "Signup"}
+                <button className="isloading_spinner mt_4">
+                    Signup
                 </button>
 
                 <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 25 }}>
@@ -69,8 +66,6 @@ const Signup = () => {
                     <Link to="/login">Or Login</Link>
                     <>---------------------</>
                 </div>
-
-                {/* <ToastContainer /> */}
             </form>
 
         </div>

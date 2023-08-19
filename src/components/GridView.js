@@ -2,12 +2,11 @@ import React from 'react';
 import { Cards } from './index';
 
 const GridView = ({ products }) => {
-    // const [progress, setProgress] = useState(0);
 
     return (
         <div className='products_wrapper'>
             <div className='product_page_container'>
-                {products && products.map((curVal, id) => {
+                {products && products?.map((curVal, id) => {
                     const { category, image, price } = curVal;
 
                     return (

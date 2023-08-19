@@ -1,8 +1,7 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
+
 import './globals.scss';
-import Signup from './components/Signup';
-// import Login from './components/Login';
 
 const Home = lazy(() => import('./components/home/Home'));
 const Products = lazy(() => import('./components/products/Products'));
@@ -12,13 +11,14 @@ const Footer = lazy(() => import('./components/footer/Footer'));
 const Header = lazy(() => import('./components/header/Header'));
 const About = lazy(() => import('./components/about/About'));
 const AddItem = lazy(() => import('./components/AddItem'));
-const Login = lazy(() => import("./components/Login"))
+const Login = lazy(() => import('./components/Login'));
+const Signup = lazy(() => import('./components/Signup'));
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={""}>
-        <Header />
+      <Header />
+      <Suspense>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
@@ -29,8 +29,8 @@ const App = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
         </Routes>
-        <Footer />
       </Suspense>
+      <Footer />
     </BrowserRouter>
   );
 };

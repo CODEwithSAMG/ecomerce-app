@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { LoginSpinner } from "../UI/LoginSPinner";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -15,7 +14,6 @@ const Login = () => {
         password: ""
     });
 
-    const [isLoading, setIsLoading] = useState(false); // Initialize isLoading state
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -28,19 +26,15 @@ const Login = () => {
     };
 
     const handleSubmit = async () => {
-        setIsLoading(true);
         try {
             await new Promise((resolve) => setTimeout(resolve, 700));
-            setIsLoading(false);
             toast.success("Logged in successfully!");
             setTimeout(() => {
                 navigate('/')
             }, 3000)
 
         } catch (error) {
-            setIsLoading(false);
             console.error("An error occurred:", error);
-            toast.error("An error occurred. Please try again later.");
         }
     };
 
@@ -90,8 +84,8 @@ const Login = () => {
                     />
                 </div>
 
-                <button className="isloading_spinner mt_4" onClick={handleSubmit} disabled={isLoading}>
-                    {isLoading ? <><LoginSpinner /> Login </> : "Login"}
+                <button className="isloading_spinner mt_4" onClick={handleSubmit}>
+                    Login
                 </button>
 
                 <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 25 }}>

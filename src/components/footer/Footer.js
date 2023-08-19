@@ -2,7 +2,7 @@ import { AiFillInstagram, AiFillTwitterCircle, AiOutlineTwitter } from "react-ic
 
 const Footer = () => {
     return (
-        <div className='footer'>
+        <footer className='footer'>
 
             <h4 className="font_style_purple">
                 <b className="font-bold">&lt;/&gt;</b>
@@ -12,7 +12,7 @@ const Footer = () => {
             <AiOutlineTwitter />
             <AiFillTwitterCircle />
 
-        </div>
+        </footer>
     )
 }
 
