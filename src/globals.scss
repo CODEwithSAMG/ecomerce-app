@@ -7,14 +7,17 @@ body,
 * {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.red {
+  color: red;
 }
 
 .main-container {
@@ -67,7 +70,12 @@ a {
 }
 
 .ui_styles li:hover a {
-  color: blue;
+  color: rgb(104, 85, 224);
+  border-bottom: 2px solid;
+}
+
+.ui_styles li a:active {
+  border-bottom: 4px solid;
 }
 
 .ui_styles li .icon {
@@ -785,7 +793,7 @@ a {
 
 .contactus_container {
   display: flex;
-  margin: 7rem auto;
+  margin: 2.5rem auto;
   max-width: 60vw;
   width: 100%;
 }
@@ -808,8 +816,8 @@ a {
     div {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin-bottom: 20px;
+      gap: 2px;
+      margin-bottom: 10px;
 
       input {
         padding: 15px;
@@ -849,12 +857,13 @@ a {
 
 .products_wrapper {
   text-align: center;
-  margin-top: 5rem;
+  margin: 6rem 0;
 
   h1 {
     font-weight: bolder;
     --tw-text-opacity: 1;
     color: rgb(55 65 81 / var(--tw-text-opacity));
+    margin-bottom: 3rem;
   }
 }
 
@@ -898,9 +907,10 @@ figure {
 }
 
 .left_contact {
-  width: 600px;
-  transform: scale(1.2);
+  width: 48%;
+  transform: scale(1.1);
   background-size: cover;
+  border-radius: 10px;
 }
 
 .card {
@@ -929,11 +939,10 @@ figure {
 
 .login_btn {
   cursor: pointer;
-  border: 0;
   border-radius: 4px;
   font-weight: 700;
-  margin: 0 10px;
-  padding: 10px 20px;
+  margin: 5px 10px;
+  padding: 4px 20px;
   box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
   transition: 0.4s;
   font-size: 1rem;
@@ -960,7 +969,7 @@ figure {
   cursor: pointer;
   border: 0;
   border-radius: 4px;
-  // font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   background-color: rgb(104, 85, 224);
   box-shadow: 10px 10px 20px rgba(39, 5, 255, 0.2);
@@ -970,6 +979,14 @@ figure {
   &:hover {
     background-color: rgb(118, 107, 192);
   }
+}
+
+.loading {
+  cursor: not-allowed;
+  background-color: rgb(118, 107, 192);
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .login_wrapper {
@@ -1062,14 +1079,15 @@ figure {
   text-align: center;
   padding: 1rem 5rem;
   box-shadow: 1px 1px 10px gainsboro;
+  background-color: white;
 }
 
 .signup_btn {
   cursor: pointer;
   border-radius: 4px;
   font-weight: 700;
-  margin: 0 10px;
-  padding: 10px 20px;
+  margin: 5px 10px;
+  padding: 4px 20px;
   box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
   font-size: 1rem;
   color: white;
@@ -1080,7 +1098,6 @@ figure {
 /* About Us page */
 .about-us-container {
   padding: 2rem 19rem;
-  font-family: "Open Sans", sans-serif;
   color: #333;
   margin-bottom: 4rem;
 }
@@ -1093,7 +1110,7 @@ figure {
 .about-us-paragraph {
   line-height: 1.5;
   font-size: 1.1rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .hero-section {
@@ -1104,7 +1121,6 @@ figure {
 }
 
 .hero-heading {
-  font-family: "Montserrat", sans-serif;
   font-size: 2.5rem;
   color: rgb(104, 85, 224);
   margin-bottom: 10px;
@@ -1113,6 +1129,151 @@ figure {
 .hero-description {
   font-size: 1.2rem;
   margin-bottom: 40px;
+}
+
+.feed {
+  padding: 25px;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.postSk {
+  // width: 20rem;
+  // margin-right: 12px;
+  // margin-bottom: 30px;
+  // animation: skeleton 1s ease infinite alternate;
+  /* width: 42rem; */
+  /* margin-right: 12px; */
+  /* margin-bottom: 30px; */
+  /* animation: skeleton 1s ease infinite alternate; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+@keyframes skeleton {
+  to {
+    opacity: 0.5;
+  }
+}
+
+.postSkImg {
+  background-color: #313131;
+  width: 604px;
+  height: 153px;
+  border: 2px solid red;
+}
+
+.postSkInfo {
+  display: flex;
+  margin-top: 15px;
+}
+
+.postSkAvatar {
+  background-color: #313131;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.postSkDetail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.postSkText {
+  background-color: #313131;
+  width: 90%;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.postSkText.sm {
+  width: 50%;
+}
+
+.topSk {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  animation: skeleton 1s ease infinite alternate;
+}
+
+.topSkIcon {
+  margin-right: 20px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #313131;
+}
+
+.topSkImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 40px;
+  background-color: #313131;
+}
+
+.menuSk {
+  animation: skeleton 1s ease infinite alternate;
+}
+
+.menuSkItem {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #313131;
+  margin-top: 40px;
+}
+
+.circle,
+.custom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom {
+  flex-direction: column;
+}
+
+.balls {
+  display: flex;
+}
+
+.ball {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 10px;
+  animation: ball 0.5s ease infinite alternate;
+}
+
+.ball2 {
+  animation-delay: 0.1s;
+}
+
+.ball3 {
+  animation-delay: 0.2s;
+}
+
+@keyframes ball {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+.customTet {
+  font-weight: 100;
 }
 
 @media screen and (max-width: 768px) {

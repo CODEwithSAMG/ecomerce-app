@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { TopLoader } from '../UI/TopLoader';
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { POSTDATA } from "../auth/HTTRequests"
+import { toast, ToastContainer } from "react-toastify";
 
-import "../App.css"
-
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactUs = () => {
     const [progress, setProgress] = useState(0);
@@ -26,8 +27,19 @@ const ContactUs = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        try {
+            const response = await POSTDATA("/contact", form)
+            if (response) {
+                toast.success("form succesfully submited");
+            } else {
+                console.error("Failed to submit contact form");
+            }
+        } catch (error) {
+            console.error("An error occurred:", error);
+        }
 
         setForm({
             name: '',
@@ -46,7 +58,7 @@ const ContactUs = () => {
     return (
         <>
             <TopLoader progress={progress} setProgress={setProgress} />
-
+            <ToastContainer position="top-center" />
             <h2 className='contactus_title'>Feel Free to Contact Us</h2>
 
             <section className='contactus_container'>

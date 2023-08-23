@@ -1,7 +1,9 @@
-import React, { createContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 import reducer from "../reducer/ProductReducer";
 
 const AppContext = createContext();
+
+const API = `https://fakestoreapi.com/products`;
 
 const initialState = {
     singleProduct: {},
@@ -14,6 +16,17 @@ const initialState = {
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    const getSingleProduct = async (id) => {
+        try {
+            const response = await fetch(`${API}/${id}`);
+            const jsonSingleProduct = await response.json();
+            dispatch({ type: "singleProduct", payload: jsonSingleProduct });
+        } catch (error) {
+            console.error("Error fetching single product:", error);
+        } finally {
+        }
+    };
+
     const updateFilterValues = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -22,7 +35,7 @@ const AppProvider = ({ children }) => {
     }
 
     return (
-        <AppContext.Provider value={{ ...state, dispatch, updateFilterValues }}>
+        <AppContext.Provider value={{ ...state, dispatch, updateFilterValues, getSingleProduct }}>
             {children}
         </AppContext.Provider>
     );

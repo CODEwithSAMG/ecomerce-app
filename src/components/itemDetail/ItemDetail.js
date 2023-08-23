@@ -7,36 +7,27 @@ import { AppContext } from '../../context/ProductContext';
 import StarRating from '../StarRating';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
-import { TopLoader } from "../../UI/TopLoader";
-
-const API = 'https://fakestoreapi.com/products';
+// import { TopLoader } from "../../UI/TopLoader";
 
 const ItemDetail = () => {
-    const [progress, setProgress] = useState(0)
-    const { dispatch, singleProduct: { title, price, description, image, rating } } = useContext(AppContext);
-
+    // const [progress, setProgress] = useState(0)
+    const { getSingleProduct, singleProduct } = useContext(AppContext);
+    const { image, title, rating, description, price } = singleProduct;
     const { id } = useParams();
-    const updatedId = Number(id)
+    // const updatedId = Number(id)
 
-    const getSingleProduct = async (api) => {
-        try {
-            const response = await fetch(`${api}/${updatedId}`);
-            const jsonSingleProduct = await response.json();
-            dispatch({ type: "singleProduct", payload: jsonSingleProduct });
-        } catch (error) {
-            console.error("Error fetching single product:", error);
-            dispatch({ type: "single_prod_error" });
-        } finally {
-            setProgress(100);
-        }
-    };
+    const AddToCart = (items) => {
+        console.log(items)
+    }
 
     useEffect(() => {
-        getSingleProduct(API);
-    });
+        getSingleProduct(id);
+        // setProgress(100);
+    }, [id]);
 
     return (
         <div className='product-detail-container'>
+            {/* <TopLoader progress={progress} setProgress={setProgress} /> */}
             <div className='product-detail-wrapper'>
                 <div>
                     <img src={image} width={500} height={500} alt='product_image' />
@@ -101,19 +92,17 @@ const ItemDetail = () => {
                         </div>
                     </div>
 
-                    <Link to="/addItem">
-                        <button className='add-to-cart'>
-                            Add To Cart
-                        </button>
-                    </Link>
+                    {/* <Link to="/addItem"> */}
+                    <button className='add-to-cart' onClick={() => AddToCart(singleProduct)}>
+                        Add To Cart
+                    </button>
+                    {/* </Link> */}
 
                     <button className='buy-now'>
                         Buy Now
                     </button>
                 </div>
             </div>
-
-            <TopLoader progress={progress} setProgress={setProgress} />
         </div>
     );
 }

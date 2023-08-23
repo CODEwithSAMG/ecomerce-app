@@ -11,8 +11,8 @@ const Footer = lazy(() => import('./components/footer/Footer'));
 const Header = lazy(() => import('./components/header/Header'));
 const About = lazy(() => import('./components/about/About'));
 const AddItem = lazy(() => import('./components/AddItem'));
-const Login = lazy(() => import('./components/Login'));
-const Signup = lazy(() => import('./components/Signup'));
+const Login = lazy(() => import('./auth/Login'));
+const Signup = lazy(() => import('./auth/Signup'));
 
 const App = () => {
   return (
