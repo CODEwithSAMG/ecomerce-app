@@ -8,7 +8,8 @@ const Cards = ({ id, category, image, price }) => {
             <NavLink style={{ textDecoration: 'none' }} to={`/item/${id}`}>
                 <div className={`product_card`}>
                     <LazyLoadImage
-                        className='product_image' width={200} height={200}
+                        className='product_image'
+                        // width={200} height={200}
                         src={image}
                         effect="blur"
                         loading="lazy"
