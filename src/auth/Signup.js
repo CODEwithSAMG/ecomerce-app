@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import ReCAPTCHA from "react-google-recaptcha";
 
-import "react-toastify/dist/ReactToastify.css";
-import "./auth.css";
 import { CircularSpinner } from "../UI/LoadingSpinner";
 import { TopLoader } from "../UI/TopLoader";
+
+import "react-toastify/dist/ReactToastify.css";
+import "./auth.css";
 
 const TEST_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
@@ -74,7 +75,7 @@ const Signup = () => {
       <div className="login_left_img" />
 
       <form className="login_form">
-        <h2 className="login_title"> Apna Bazza</h2>
+        <h1 className="login_title"> Apna Bazza</h1>
         <p> Create Account</p>
 
         <div
@@ -90,10 +91,11 @@ const Signup = () => {
         </div>
 
         <div className="input_field mt_4">
-          <label htmlFor="">Email Address:</label>
+          <label for="email" htmlFor="">Email Address:</label>
           <input
             type="email"
             name="email"
+            id="email"
             onChange={handleChange}
             value={registrationData.email}
             required
@@ -105,10 +107,11 @@ const Signup = () => {
         </div>
 
         <div className="input_field mt_4">
-          <label htmlFor="">Password</label>
+          <label for="password">Password</label>
           <input
             type="password"
             name="password"
+            id="password"
             onChange={handleChange}
             value={registrationData.password}
             required
@@ -124,6 +127,7 @@ const Signup = () => {
         </div>
 
         <button
+          type="button"
           className={`isloading_spinner mt_4 {
                                 ${isLoading ? "loading" : ""}`}
           onClick={handleSignup}
