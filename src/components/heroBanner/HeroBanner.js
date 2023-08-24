@@ -17,7 +17,7 @@ const HeroBanner = () => {
             <div>
 
                 <div className='desc'>
-                    <h5>Description</h5>
+                    <p>Description</p>
                     <p>Best headphone on the market</p>
                 </div>
             </div>
