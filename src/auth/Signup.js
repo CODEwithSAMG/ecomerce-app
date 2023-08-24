@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import ReCAPTCHA from "react-google-recaptcha";
 
 import { CircularSpinner } from "../UI/LoadingSpinner";
 import { TopLoader } from "../UI/TopLoader";
@@ -96,6 +95,7 @@ const Signup = () => {
             type="email"
             name="email"
             id="email"
+            aria-labelledby="email"
             onChange={handleChange}
             value={registrationData.email}
             required
@@ -112,17 +112,10 @@ const Signup = () => {
             type="password"
             name="password"
             id="password"
+            aria-labelledby="password"
             onChange={handleChange}
             value={registrationData.password}
             required
-          />
-        </div>
-
-        <div className="mt_4">
-          <ReCAPTCHA
-            style={{ display: "inline-block" }}
-            theme="dark"
-            sitekey={TEST_SITE_KEY}
           />
         </div>
 

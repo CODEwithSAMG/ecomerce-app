@@ -27,9 +27,8 @@ const Home = () => {
         <div style={{ padding: "0px 19rem" }} >
             <TopLoader progress={progress} setProgress={setProgress} />
 
-            <div >
-                <HeroBanner />
-            </div>
+            <HeroBanner />
+
             <HomeProductList productsData={productsData} />
         </div>
     );
