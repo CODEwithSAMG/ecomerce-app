@@ -10,7 +10,10 @@ const HeroBanner = () => {
             <h3>Summer Sale</h3>
             <LazyLoadImage
                 className='hero-banner-image'
-                effect="blur" src="headphone.webp" loading="lazy" />
+                effect="blur" src="headphone.webp"
+                loading="lazy"
+                alt="hero banner image"
+            />
             <div>
 
                 <div className='desc'>
