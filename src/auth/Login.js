@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import ReCAPTCHA from "react-google-recaptcha";
-import { TopLoader } from "../UI/TopLoader";
+
 import "react-toastify/dist/ReactToastify.css";
 import "./auth.css"
 
@@ -50,10 +50,6 @@ const Login = () => {
             console.log("An error occurred:", error);
         }
     };
-
-    useEffect(() => {
-        <TopLoader />
-    }, [])
 
     return (
         <div className="login_wrapper">
