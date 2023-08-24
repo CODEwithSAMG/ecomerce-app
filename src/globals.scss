@@ -252,7 +252,7 @@ a {
   }
 }
 
-.hero-banner-container h3 {
+.hero-banner-container h1 {
   font-size: 4rem;
   margin-top: 4px;
 }
@@ -432,6 +432,11 @@ a {
   display: flex;
   gap: 30px;
   width: 22%;
+}
+
+.beat-solo {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .product_image {

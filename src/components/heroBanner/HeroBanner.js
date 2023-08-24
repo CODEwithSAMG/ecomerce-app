@@ -3,11 +3,11 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 const HeroBanner = () => {
     return (
         <div className='hero-banner-container'>
-            <p className='beat-solo'>
+            <h1 className='beat-solo'>
                 Beats Solo Air
-            </p>
+            </h1>
 
-            <h3>Summer Sale</h3>
+            <h2>Summer Sale</h2>
             <LazyLoadImage
                 className='hero-banner-image'
                 effect="blur" src="headphone.webp"
