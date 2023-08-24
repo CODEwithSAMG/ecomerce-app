@@ -15,8 +15,8 @@ const Cards = ({ id, category, image, price }) => {
                         loading="lazy"
                         alt='product image'
                     />
-                    <h3>{category}</h3>
-                    <h3>$ {price}</h3>
+                    <h1>{category}</h1>
+                    <h2>$ {price}</h2>
                 </div>
             </NavLink>
         </div>
