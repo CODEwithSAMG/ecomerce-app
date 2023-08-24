@@ -33,16 +33,13 @@ const Header = () => {
           </NavLink>
         </li>
 
-        <li>
-          <NavLink to='/login' title="Auth">
-            <button type="button" className="login_btn">Login</button>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/signup" title="Signup">
-            <button type="button" className="signup_btn">Signup</button>
-          </NavLink>
-        </li>
+        <NavLink to='/login' title="Auth">
+          <button type="button" className="login_btn">Login</button>
+        </NavLink>
+
+        <NavLink to="/signup" title="Signup">
+          <button type="button" className="signup_btn">Signup</button>
+        </NavLink>
       </ul>
     </header>
   );
