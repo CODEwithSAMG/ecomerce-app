@@ -9,14 +9,13 @@ const Cards = ({ id, category, image, price }) => {
                 <div className={`product_card`}>
                     <LazyLoadImage
                         className='product_image'
-                        // width={200} height={200}
                         src={image}
                         effect="blur"
                         loading="lazy"
                         alt='product image'
                     />
-                    <h1>{category}</h1>
-                    <h2>$ {price}</h2>
+                    <p>{category}</p>
+                    <p>$ {price}</p>
                 </div>
             </NavLink>
         </div>

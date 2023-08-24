@@ -431,6 +431,12 @@ a {
 .product {
   display: flex;
   gap: 30px;
+  width: 22%;
+}
+
+.product_image {
+  height: auto;
+  width: 50%;
 }
 
 .item-desc .flex {

@@ -11,7 +11,6 @@ const HeroBanner = () => {
             <LazyLoadImage
                 className='hero-banner-image'
                 effect="blur" src="headphone.webp"
-                loading="lazy"
                 alt="hero banner image"
             />
             <div>
