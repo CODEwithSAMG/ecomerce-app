@@ -1,6 +1,6 @@
-::-webkit-scrollbar {
-  display: none;
-}
+// ::-webkit-scrollbar {
+//   display: none;
+// }
 
 html,
 body,
@@ -1080,6 +1080,10 @@ figure {
   padding: 1rem 5rem;
   box-shadow: 1px 1px 10px gainsboro;
   background-color: white;
+
+  p {
+    font-size: 1.2rem;
+  }
 }
 
 .signup_btn {

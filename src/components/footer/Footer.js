@@ -3,10 +3,10 @@ import { AiFillInstagram, AiFillTwitterCircle, AiOutlineTwitter } from "react-ic
 const Footer = () => {
     return (
         <footer className='footer'>
-
-            <h4 className="font_style_purple">
-                <b className="font-bold">&lt;/&gt;</b>
-                Apna Bazza  &copy; 2023 Copyright Apna Bazzar. ALL right reserved 2023</h4>
+            <p className="font_style_purple">
+                <b className="font-bold">&lt;/&gt;
+                    Apna Bazza </b> &copy; 2023 Copyright Apna Bazzar. ALL right reserved 2023
+            </p>
 
             <AiFillInstagram />
             <AiOutlineTwitter />
