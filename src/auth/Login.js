@@ -44,8 +44,6 @@ const Login = () => {
                 body: JSON.stringify(loginData)
             })
 
-            console.log(response)
-
         } catch (error) {
             console.log("An error occurred:", error);
         }

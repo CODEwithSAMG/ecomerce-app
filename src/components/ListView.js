@@ -11,7 +11,7 @@ const ListView = ({ products }) => {
                     const { description, id, image, price, title } = curElem;
 
                     return (
-                        <div key={id} className='custom-grid card'>
+                        <div key={id} className='card'>
                             <figure>
                                 <LazyLoadImage
                                     className='list_view_img'
@@ -25,7 +25,7 @@ const ListView = ({ products }) => {
                             <div className='card-data'>
                                 <h3>{title}</h3>
                                 <p>$ {price}</p>
-                                <p>{description.slice(0, 130)}....</p>
+                                <p className='list_view_desc'>{description.slice(0, 160)}....</p>
 
                                 <NavLink to={`/item/${id}`}>
                                     <button className='btn'>Read More</button>

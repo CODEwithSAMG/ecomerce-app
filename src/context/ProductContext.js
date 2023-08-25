@@ -6,7 +6,9 @@ const AppContext = createContext();
 const API = `https://fakestoreapi.com/products`;
 
 const initialState = {
+    products: [],
     singleProduct: {},
+    isLoading: true,
     gridView: true,
     filters: {
         text: ""
@@ -15,6 +17,16 @@ const initialState = {
 
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    const getApiProduct = async () => {
+        try {
+            const response = await fetch(`${API}`);
+            const jsonResponse = await response.json();
+            dispatch({ type: "products", payload: jsonResponse });
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     const getSingleProduct = async (id) => {
         try {
@@ -35,7 +47,7 @@ const AppProvider = ({ children }) => {
     }
 
     return (
-        <AppContext.Provider value={{ ...state, dispatch, updateFilterValues, getSingleProduct }}>
+        <AppContext.Provider value={{ ...state, dispatch, updateFilterValues, getSingleProduct, getApiProduct }}>
             {children}
         </AppContext.Provider>
     );

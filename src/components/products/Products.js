@@ -11,6 +11,7 @@ const Products = () => {
     const [selectedSortOption, setSelectedSortOption] = useState('');
     const [error, setError] = useState(null);
     const [progress, setProgress] = useState(0);
+    const [selectedCategory, setSelectedCategory] = useState('All');
     const { gridView, dispatch, filters: { text }, updateFilterValues } = useContext(AppContext);
 
     const ViewComponent = gridView ? ListView : GridView;
@@ -66,12 +67,13 @@ const Products = () => {
     });
 
     const filteredProducts = sortedProducts.filter(product =>
-        product.title.toLowerCase().includes(text.toLowerCase())
+        product.title.toLowerCase().includes(text.toLowerCase()) &&
+        (selectedCategory === 'All' || product.category === selectedCategory)
     );
 
     const getUniqueData = (data) => {
         let newValue = data && data?.map((val) => {
-            return val.category
+            return val.category;
         });
 
         return ["All", ...new Set(newValue)];
@@ -80,14 +82,11 @@ const Products = () => {
     const categoryData = getUniqueData(products);
 
     const onHandleCLickCategory = (val) => {
-        console.log(val.target);
-        if (val.category === "jewelery") {
-            return val;
-        }
+        setSelectedCategory(val);
     };
 
     return (
-        <section className='products'>
+        <section className='products p-10'>
             <TopLoader progress={progress} setProgress={setProgress} />
 
             <section className='products_nthchild'>
@@ -95,8 +94,8 @@ const Products = () => {
 
                 {categoryData?.map((val, key) => {
                     return (
-                        <div key={key} style={{ display: "flex", fontSize: "2rem" }}>
-                            <div onClick={onHandleCLickCategory}>{val}</div>
+                        <div className='products_left_container ' key={key}>
+                            <div onClick={() => onHandleCLickCategory(val)}>{val}</div>
                         </div>
                     );
                 })}
@@ -113,7 +112,7 @@ const Products = () => {
                         </button>
                     </div>
 
-                    <h4>{filteredProducts.length} Products Available</h4>
+                    <p>{filteredProducts.length} Products Available</p>
 
                     <div>
                         <select style={{ padding: 6, fontSize: "1rem", fontWeight: 500 }} value={selectedSortOption} onChange={handleSortChange}>

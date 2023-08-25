@@ -1,12 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { HomeProductList } from './HomeProductList';
 
 import { HeroBanner } from '../index';
 import { TopLoader } from '../../UI/TopLoader';
+import { AppContext } from '../../context/ProductContext';
 
 const Home = () => {
     const [productsData, setProductsData] = useState([]);
     const [progress, setProgress] = useState(0);
+
+    const { getApiProduct, products, singleProduct } = useContext(AppContext);
 
     const fetchData = async () => {
         try {
@@ -21,10 +24,11 @@ const Home = () => {
 
     useEffect(() => {
         fetchData();
+        getApiProduct()
     }, []);
 
     return (
-        <div style={{ padding: "0px 19rem" }} >
+        <div className='p-10'>
             <TopLoader progress={progress} setProgress={setProgress} />
 
             <HeroBanner />

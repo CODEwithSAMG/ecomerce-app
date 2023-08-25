@@ -1,5 +1,3 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
-
 const HeroBanner = () => {
     return (
         <div className='hero-banner-container'>
@@ -8,11 +6,8 @@ const HeroBanner = () => {
             </h1>
 
             <h2>Summer Sale</h2>
-            <LazyLoadImage
-                className='hero-banner-image'
-                effect="blur" src="headphone.webp"
-                alt="hero banner image"
-            />
+
+            <img className='hero-banner-image' src="headphone.webp" alt="hero banner image" />
             <div>
 
                 <div className='desc'>
