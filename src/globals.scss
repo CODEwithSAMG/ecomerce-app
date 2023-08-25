@@ -860,6 +860,10 @@ a {
         outline: none;
         resize: vertical;
       }
+
+      button {
+        margin-top: 60px !important;
+      }
     }
   }
 
@@ -1004,6 +1008,7 @@ figure {
   box-shadow: 10px 10px 20px rgba(39, 5, 255, 0.2);
   transition: 0.4s;
   width: 100%;
+  margin-top: 2rem !important;
 
   &:hover {
     background-color: rgb(118, 107, 192);

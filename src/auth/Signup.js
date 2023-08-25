@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-
 import { CircularSpinner } from "../UI/LoadingSpinner";
 import { TopLoader } from "../UI/TopLoader";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./auth.css";
 
-const TEST_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-
 const Signup = () => {
   const [emailError, setEmailError] = useState("");
-  const [progress, setProgress] = useState(30)
+  const [progress, setProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(false);
+
   const [registrationData, setRegistrationData] = useState({
     email: "",
     password: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -44,7 +42,6 @@ const Signup = () => {
         },
         body: JSON.stringify(registrationData),
       });
-      console.log("Flkdjsklj");
 
       if (response.ok) {
         toast.success("Registered successfully! Redirectign to Login Page");
@@ -52,14 +49,14 @@ const Signup = () => {
         setTimeout(() => {
           navigate("/login");
         }, 3000);
-        // setDisabled(true)
       } else if (response.status === 400) {
         toast.warning("user already registered.");
       } else {
         toast.error("something went wrong");
       }
-    } catch (error) {
-      console.error("An error occurred:", error);
+
+    } catch {
+      toast.error("something went wrong");
     }
   };
 
@@ -69,7 +66,14 @@ const Signup = () => {
 
   return (
     <div className="login_wrapper">
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        rtl={false}
+        pauseOnHover
+      />
       <TopLoader progress={progress} setProgress={setProgress} />
       <div className="login_left_img" />
 
@@ -90,7 +94,7 @@ const Signup = () => {
         </div>
 
         <div className="input_field mt_4">
-          <label for="email" htmlFor="">Email Address:</label>
+          <label htmlFor="email">Email Address:</label>
           <input
             type="email"
             name="email"
@@ -107,7 +111,7 @@ const Signup = () => {
         </div>
 
         <div className="input_field mt_4">
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
@@ -121,7 +125,7 @@ const Signup = () => {
 
         <button
           type="button"
-          className={`isloading_spinner mt_4 {
+          className={`isloading_spinner  {
                                 ${isLoading ? "loading" : ""}`}
           onClick={handleSignup}
           disabled={isLoading}
