@@ -35,6 +35,11 @@ const Header = () => {
               About
             </NavLink>
           </li>
+          <li>
+            <NavLink to='/privacy-policy/' title="About" >
+              Privacy Policy
+            </NavLink>
+          </li>
         </ul>
 
         <NavLink to='/login' title="Auth">

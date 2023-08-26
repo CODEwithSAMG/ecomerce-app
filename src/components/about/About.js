@@ -9,7 +9,7 @@ const AboutUsPage = () => {
     }, [])
 
     return (
-        <div className="about-us-container">
+        <div className="about-us-container p-10">
             <TopLoader progress={progress} setProgress={setProgress} />
 
             <h1 className="about-us-heading">About Apna Bazza</h1>

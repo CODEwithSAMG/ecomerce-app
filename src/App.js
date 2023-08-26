@@ -13,6 +13,7 @@ const About = lazy(() => import('./components/about/About'));
 const AddItem = lazy(() => import('./components/AddItem'));
 const Login = lazy(() => import('./auth/Login'));
 const Signup = lazy(() => import('./auth/Signup'));
+const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path='/addItem' element={<AddItem />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         </Routes>
       </Suspense>
       <Footer />
