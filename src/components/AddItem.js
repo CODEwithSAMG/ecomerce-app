@@ -1,11 +1,62 @@
+import { useCartContext } from "../context/AddToCartContext"
+
 const AddItem = () => {
+    const { cart, DeleteCartItem } = useCartContext();
+
     return (
-        <div>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus laboriosam nisi repellat recusandae hic quas mollitia, veniam dolore necessitatibus officia excepturi voluptatum, deleniti a odio aliquid alias at beatae nemo. Voluptatibus nostrum minima eaque, beatae iusto numquam recusandae cupiditate in temporibus! Itaque commodi voluptas corporis exercitationem in, ab veritatis, facilis dolore aliquam maxime consectetur voluptatibus labore quia? Aut, sint delectus! Nam reprehenderit itaque assumenda quisquam cupiditate tenetur praesentium consequuntur veritatis reiciendis a, excepturi amet quam, magni rerum, velit quod natus. Amet obcaecati labore dolore ab repellendus consequatur ipsum, temporibus unde, vel quaerat eum pariatur omnis odio excepturi aliquam laudantium at.
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus laboriosam nisi repellat recusandae hic quas mollitia, veniam dolore necessitatibus officia excepturi voluptatum, deleniti a odio aliquid alias at beatae nemo. Voluptatibus nostrum minima eaque, beatae iusto numquam recusandae cupiditate in temporibus! Itaque commodi voluptas corporis exercitationem in, ab veritatis, facilis dolore aliquam maxime consectetur voluptatibus labore quia? Aut, sint delectus! Nam reprehenderit itaque assumenda quisquam cupiditate tenetur praesentium consequuntur veritatis reiciendis a, excepturi amet quam, magni rerum, velit quod natus. Amet obcaecati labore dolore ab repellendus consequatur ipsum, temporibus unde, vel quaerat eum pariatur omnis odio excepturi aliquam laudantium at.
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus laboriosam nisi repellat recusandae hic quas mollitia, veniam dolore necessitatibus officia excepturi voluptatum, deleniti a odio aliquid alias at beatae nemo. Voluptatibus nostrum minima eaque, beatae iusto numquam recusandae cupiditate in temporibus! Itaque commodi voluptas corporis exercitationem in, ab veritatis, facilis dolore aliquam maxime consectetur voluptatibus labore quia? Aut, sint delectus! Nam reprehenderit itaque assumenda quisquam cupiditate tenetur praesentium consequuntur veritatis reiciendis a, excepturi amet quam, magni rerum, velit quod natus. Amet obcaecati labore dolore ab repellendus consequatur ipsum, temporibus unde, vel quaerat eum pariatur omnis odio excepturi aliquam laudantium at.
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus laboriosam nisi repellat recusandae hic quas mollitia, veniam dolore necessitatibus officia excepturi voluptatum, deleniti a odio aliquid alias at beatae nemo. Voluptatibus nostrum minima eaque, beatae iusto numquam recusandae cupiditate in temporibus! Itaque commodi voluptas corporis exercitationem in, ab veritatis, facilis dolore aliquam maxime consectetur voluptatibus labore quia? Aut, sint delectus! Nam reprehenderit itaque assumenda quisquam cupiditate tenetur praesentium consequuntur veritatis reiciendis a, excepturi amet quam, magni rerum, velit quod natus. Amet obcaecati labore dolore ab repellendus consequatur ipsum, temporibus unde, vel quaerat eum pariatur omnis odio excepturi aliquam laudantium at.
-        </div>
+        <>
+            {cart.map(({ image, title, price, id }) => {
+
+                return <section className="additem_wrapper p-10">
+                    <div className="additem_container bg_color_white">
+                        <figure>
+                            <img src={image} alt="" />
+                        </figure>
+
+                        <div className="additem_right_container">
+                            <div className="text_theme_color">
+                                {title}
+                            </div>
+
+                            61% off Deal
+
+                            <div >
+                                $ {price}
+                            </div>
+                            <div >
+                                in Stock
+                            </div>
+                            <p>
+                                Eligible by free shipping
+                            </p>
+
+                            <button className="qty_btn">Qty : 1 </button>
+
+
+                            <div >
+                                <button onClick={() => DeleteCartItem(id)}>
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg_color_white add_item_second_container">
+                        <div>
+                            {title}
+                        </div>
+                        <div >
+                            $ {price}
+                        </div>
+                        <div >
+                            in Stock
+                        </div>
+
+                    </div>
+                </section>
+            })
+            }
+        </>
     )
 }
 

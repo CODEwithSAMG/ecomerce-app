@@ -1,24 +1,23 @@
 import { useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { TbTruckDelivery, TbReplace } from 'react-icons/tb';
 import { MdSecurity } from 'react-icons/md';
 
 import { AppContext } from '../../context/ProductContext';
 import StarRating from '../StarRating';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { useCartContext } from '../../context/AddToCartContext';
 
 // import { TopLoader } from "../../UI/TopLoader";
 
 const ItemDetail = () => {
     // const [progress, setProgress] = useState(0)
     const { getSingleProduct, singleProduct } = useContext(AppContext);
+    const { AddToCart, DeleteCartItem } = useCartContext();
+
     const { image, title, rating, description, price } = singleProduct;
     const { id } = useParams();
     // const updatedId = Number(id)
-
-    const AddToCart = (items) => {
-        console.log(items)
-    }
 
     useEffect(() => {
         getSingleProduct(id);
@@ -26,16 +25,14 @@ const ItemDetail = () => {
     }, [id]);
 
     return (
-        <div className='product-detail-container'>
+        <section className='product-detail-container p-10'>
             {/* <TopLoader progress={progress} setProgress={setProgress} /> */}
             <div className='product-detail-wrapper'>
-                <div>
-                    <img src={image} width={500} height={500} alt='product_image' />
-                </div>
-                <div style={{ borderLeft: "1px solid RGB(255, 255, 247)" }}>
+                <figure className="bg_color_white w-40percent p-200">
+                    <img src={image} alt='product_image' />
+                </figure>
 
-                </div>
-                <div>
+                <div className='bg_color_white w-60percent p-4'>
                     <h3>{title}</h3>
                     <div className='reviews'>
                         <StarRating rating={rating} />
@@ -92,18 +89,18 @@ const ItemDetail = () => {
                         </div>
                     </div>
 
-                    {/* <Link to="/addItem"> */}
-                    <button className='add-to-cart' onClick={() => AddToCart(singleProduct)}>
-                        Add To Cart
-                    </button>
-                    {/* </Link> */}
+                    <NavLink to={"/additem"} onClick={() => AddToCart(image, title, rating, description, price, id, singleProduct)}>
+                        <button className='add-to-cart'>
+                            Add To Cart
+                        </button>
+                    </NavLink>
 
                     <button className='buy-now'>
                         Buy Now
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

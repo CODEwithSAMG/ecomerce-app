@@ -9,7 +9,7 @@ const Home = () => {
     const [productsData, setProductsData] = useState([]);
     const [progress, setProgress] = useState(0);
 
-    const { getApiProduct, products, singleProduct } = useContext(AppContext);
+    const { getApiProduct, singleProduct } = useContext(AppContext);
 
     const fetchData = async () => {
         try {

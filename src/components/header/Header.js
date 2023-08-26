@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
+
 const Header = () => {
   return (
     <header className="navbar">
       <NavLink to="/">
         <h1 className="font_style_purple">
           <b className="font-bold">&lt;/&gt;</b>
-          Apna Bazza
+          Apna Bazaar
         </h1>
       </NavLink>
 
