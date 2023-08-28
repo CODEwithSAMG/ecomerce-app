@@ -1,6 +1,6 @@
 const AddToCartReducer = (state, action) => {
     switch (action.type) {
-        case "cart":
+        case "ADD_TO_CART":
             let { image, title, rating, price, count } = action.payload;
 
             let cartProduct = { image, title, rating, price, count };
@@ -17,6 +17,12 @@ const AddToCartReducer = (state, action) => {
                     return curVal.id !== action.payload;
                 })
             };
+
+        case "CLEAR_LOCAL_STORAGE_DATA":
+            return {
+                ...state,
+                cart: []
+            }
 
         default:
             return state;

@@ -3,10 +3,7 @@ import { NavLink } from "react-router-dom";
 import CartItem from "./CartItem";
 
 const AddItem = () => {
-    const { cart, DeleteCartItem, } = useCartContext();
-    const handleClearAll = () => {
-        localStorage.clear()
-    }
+    const { cart, DeleteCartItem, clearCartItem } = useCartContext();
 
     return (
         <>
@@ -36,7 +33,7 @@ const AddItem = () => {
                         </NavLink>
 
 
-                        <button onClick={handleClearAll}>
+                        <button onClick={clearCartItem}>
                             Clear Cart
                         </button>
                     </div>

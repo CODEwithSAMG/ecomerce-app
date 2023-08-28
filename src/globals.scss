@@ -83,9 +83,9 @@ a {
 
   li {
     list-style: none;
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    font-weight: 500;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 800;
     color: rgb(104, 85, 224);
   }
 }
@@ -926,7 +926,28 @@ a {
 }
 
 .cart_icon {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  margin-top: 5px;
+  margin-left: 5px;
+  position: relative;
+  cursor: pointer;
+
+  span {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: -13px;
+    right: -15px;
+    border: none;
+    border-radius: 100%;
+    // padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: rgb(104, 85, 224);
+    color: white;
+  }
 }
 
 figure {
@@ -1020,6 +1041,8 @@ figure {
 
 .font_style_purple {
   color: rgb(104, 85, 224);
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .isloading_spinner {
@@ -1427,6 +1450,15 @@ figure {
   }
 }
 
+.hamburger {
+  font-size: 1.6rem;
+  color: rgb(104, 85, 224);
+
+  &:hover {
+    font-size: 1.8rem;
+  }
+}
+
 .bg_color_white {
   background-color: white;
   border-radius: 6px;
@@ -1455,13 +1487,17 @@ figure {
   color: rgb(104, 85, 224);
 }
 
+.d_flex {
+  display: flex;
+}
+
+.hamburger {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
   .p-10 {
     padding: 0 !important;
-  }
-
-  .navbar {
-    display: none;
   }
 
   .hero-heading {
@@ -1470,6 +1506,7 @@ figure {
 
   .product {
     width: 100%;
+    height: auto;
     box-shadow: 0px 0px 16px gray;
     border-radius: 6px;
   }
@@ -1657,8 +1694,17 @@ figure {
     margin: auto;
   }
 
-  .font_style_purple {
+  // .font_style_purple {
+  //   display: none;
+  // }
+
+  .nav_items_none {
     display: none;
+    // visibility: hidden;
+  }
+
+  .hamburger {
+    display: block;
   }
 }
 
@@ -1668,11 +1714,19 @@ figure {
   }
 
   .font_style_purple {
-    font-size: 20px;
+    font-size: 1.1rem;
   }
 
   .product-detail-wrapper {
     display: flex !important;
     flex-direction: column !important;
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+  }
+
+  .signup_btn {
+    display: none;
   }
 }

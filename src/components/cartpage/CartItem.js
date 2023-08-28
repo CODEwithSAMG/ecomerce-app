@@ -17,7 +17,7 @@ const CartItem = ({ image, title, price, count, DeleteCartItem, id, }) => {
 
                 <div >
                     $ {price}
-                </div>
+            </div>
                 <div >
                     in Stock
                 </div>
