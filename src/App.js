@@ -10,7 +10,7 @@ const ContactUs = lazy(() => import('./components/ContactUs'));
 const Footer = lazy(() => import('./components/footer/Footer'));
 const Header = lazy(() => import('./components/header/Header'));
 const About = lazy(() => import('./components/about/About'));
-const AddItem = lazy(() => import('./components/AddItem'));
+const AddItem = lazy(() => import('./components/cartpage/AddItem'));
 const Login = lazy(() => import('./auth/Login'));
 const Signup = lazy(() => import('./auth/Signup'));
 const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));

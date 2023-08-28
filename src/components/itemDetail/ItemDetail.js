@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { TbTruckDelivery, TbReplace } from 'react-icons/tb';
 import { MdSecurity } from 'react-icons/md';
@@ -7,26 +7,36 @@ import { AppContext } from '../../context/ProductContext';
 import StarRating from '../StarRating';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { useCartContext } from '../../context/AddToCartContext';
-
-// import { TopLoader } from "../../UI/TopLoader";
+import { TopLoader } from "../../UI/TopLoader";
 
 const ItemDetail = () => {
-    // const [progress, setProgress] = useState(0)
+    const [progress, setProgress] = useState(0)
+    const [count, setCount] = useState(0);
+    // const [decreaseCount, setDecreaseCount] = useState();
     const { getSingleProduct, singleProduct } = useContext(AppContext);
-    const { AddToCart, DeleteCartItem } = useCartContext();
+    const { AddToCart } = useCartContext();
 
     const { image, title, rating, description, price } = singleProduct;
     const { id } = useParams();
-    // const updatedId = Number(id)
+
+    const handleIncreaseCount = () => (
+        setCount(count + 1)
+    )
+
+    const handleDecreaseCount = () => {
+        if (count > 0) {
+            setCount(count - 1)
+        }
+    }
 
     useEffect(() => {
         getSingleProduct(id);
-        // setProgress(100);
+        setProgress(100);
     }, [id]);
 
     return (
         <section className='product-detail-container p-10'>
-            {/* <TopLoader progress={progress} setProgress={setProgress} /> */}
+            <TopLoader progress={progress} setProgress={setProgress} />
             <div className='product-detail-wrapper'>
                 <figure className="bg_color_white w-40percent p-200">
                     <img src={image} alt='product_image' />
@@ -49,21 +59,21 @@ const ItemDetail = () => {
                         ${price}
                     </div>
 
-                    <div className='quantity'>
+                    <div className='quantity m-1'>
                         <h4>Quantity:</h4>
 
                         <p>
-                            <button type='button' className='minus'>
+                            <button type='button' className='minus' onClick={handleDecreaseCount}>
                                 <AiOutlineMinus />
                             </button>
-                            <span className='num'>0</span>
-                            <button className='plus'>
+
+                            <span className='num'>{count}</span>
+
+                            <button className='plus' onClick={handleIncreaseCount}>
                                 <AiOutlinePlus />
                             </button>
                         </p>
                     </div>
-
-
 
                     <div className='product-data-warranty'>
                         <div className='product-warranty-icon'>
@@ -89,7 +99,7 @@ const ItemDetail = () => {
                         </div>
                     </div>
 
-                    <NavLink to={"/additem"} onClick={() => AddToCart(image, title, rating, description, price, id, singleProduct)}>
+                    <NavLink to={"/additem"} onClick={() => AddToCart(image, title, rating, description, price, id, singleProduct, count)}>
                         <button className='add-to-cart'>
                             Add To Cart
                         </button>
