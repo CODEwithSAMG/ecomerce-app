@@ -1,4 +1,6 @@
-const CartItem = ({ image, title, price, count, DeleteCartItem, id }) => {
+const CartItem = ({ image, title, price, count, DeleteCartItem, id, }) => {
+
+    let subTOtoal = [price * count]
 
     return (
         <div key={id} className="additem_container bg_color_white">
@@ -33,7 +35,7 @@ const CartItem = ({ image, title, price, count, DeleteCartItem, id }) => {
                 </div>
 
                 <hr />
-                Subtotal: {price * count}
+                Subtotal: {subTOtoal}
             </div>
         </div>
     )

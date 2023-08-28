@@ -4,7 +4,6 @@ import CartItem from "./CartItem";
 
 const AddItem = () => {
     const { cart, DeleteCartItem, } = useCartContext();
-
     const handleClearAll = () => {
         localStorage.clear()
     }

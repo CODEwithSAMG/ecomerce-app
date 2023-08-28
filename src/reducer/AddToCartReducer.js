@@ -1,9 +1,9 @@
 const AddToCartReducer = (state, action) => {
     switch (action.type) {
         case "cart":
-            let { image, title, rating, price } = action.payload;
+            let { image, title, rating, price, count } = action.payload;
 
-            let cartProduct = { image, title, rating, price };
+            let cartProduct = { image, title, rating, price, count };
 
             return {
                 ...state,
