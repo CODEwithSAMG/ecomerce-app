@@ -31,6 +31,7 @@ body,
 
 body {
   background-color: #eaeded;
+  overflow-x: hidden !important;
 }
 
 a {
@@ -554,6 +555,7 @@ a {
   display: flex;
   gap: 1rem;
   min-height: 69vh;
+  width: 100%;
 }
 
 .product-detail-image {
@@ -1459,6 +1461,10 @@ figure {
   }
 }
 
+.crose_btn_on_navbar {
+  display: none;
+}
+
 .bg_color_white {
   background-color: white;
   border-radius: 6px;
@@ -1496,6 +1502,11 @@ figure {
 }
 
 @media screen and (max-width: 600px) {
+  .w-60percent {
+    width: 100%;
+    padding: 1rem;
+  }
+
   .p-10 {
     padding: 0 !important;
   }
@@ -1540,6 +1551,17 @@ figure {
 }
 
 @media screen and (max-width: 800px) {
+  .ui_styles {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8rem;
+  }
+
+  .crose_btn_on_navbar {
+    display: flex;
+    z-index: 999;
+  }
+
   .products_nthchild {
     display: none;
   }
@@ -1729,4 +1751,20 @@ figure {
   .signup_btn {
     display: none;
   }
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Start with the menu off-screen */
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+}
+
+.side-menu.open {
+  right: 0; /* Slide the menu in from the right */
 }

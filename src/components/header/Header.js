@@ -1,9 +1,17 @@
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { MdShoppingCart } from "react-icons/md"
-import { RxHamburgerMenu } from "react-icons/rx"
+import { MdShoppingCart, MdClose } from "react-icons/md";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { Menu } from "../../Menu";
+// import "./Header.css"; // Import your custom CSS file for styling
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="navbar">
       <NavLink to="/">
@@ -13,22 +21,22 @@ const Header = () => {
         </p>
       </NavLink>
 
-      <RxHamburgerMenu className="hamburger"/>
+      {isMenuOpen ? (
+        <MdClose className="crose_btn_on_navbar" onClick={toggleMenu} />
+      ) : (
+        <RxHamburgerMenu className="hamburger" onClick={toggleMenu} />
+      )}
 
-      <div className="d_flex nav_items_none">
-        <ul className="ui_styles nav_items_none">
-          {Menu.map((curElem, index) => {
-
-            return (
-              <li key={index} className="list_items">
-                <NavLink to={curElem.to}>
-                  {curElem.label}
-                </NavLink>
-              </li>
-            )
-          })}
+      <div className={`side-menu ${isMenuOpen ? "open" : ""}`}>
+        <ul className="ui_styles">
+          {Menu.map((curElem, index) => (
+            <li key={index} className="list_items">
+              <NavLink to={curElem.to} onClick={toggleMenu}>
+                {curElem.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
-
 
         <NavLink to='/login' title="Auth">
           <button type="button" className="login_btn">Login</button>
