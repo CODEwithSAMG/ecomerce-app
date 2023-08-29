@@ -1,10 +1,8 @@
 const PrivacyPolicy = () => {
 
-    // const data = newDate()
     return (
-        <div style={pageStyles}>
+        <div className="pageStyles">
             <p style={headingStyles}>Privacy Policy</p>
-            {/* <p>Last updated:{data}</p> */}
 
             <p className="contentStyles">Introduction</p>
             <p>Welcome to ApnaBazaar's Privacy Policy. This policy outlines how we collect, use, and protect your personal information.</p>
@@ -84,19 +82,10 @@ const PrivacyPolicy = () => {
 
 export default PrivacyPolicy;
 
-const pageStyles = {
-    fontFamily: 'Arial, sans-serif',
-    backgroundColor: '#f8f9fa',
-    // color: 'rgb(104, 85, 224)',
-    padding: '0 10rem',
-    marginTop: "2rem",
-    marginBottom: "4rem",
-};
 
 const headingStyles = {
     color: 'rgb(104, 85, 224)',
     textAlign: "center",
     fontSize: "1.4rem",
     fontWeight: 600
-
 };

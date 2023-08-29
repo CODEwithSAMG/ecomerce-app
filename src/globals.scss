@@ -59,7 +59,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 1rem 15rem;
+  padding: 2rem 10rem;
   // background-color: red;
   background-color: #eaeded;
 }
@@ -1465,6 +1465,18 @@ figure {
   display: none;
 }
 
+.side-menu {
+  display: flex !important;
+}
+
+.pageStyles {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 2rem 10rem;
+  padding: 2rem 4rem;
+  border-radius: 8px;
+}
+
 .bg_color_white {
   background-color: white;
   border-radius: 6px;
@@ -1551,15 +1563,51 @@ figure {
 }
 
 @media screen and (max-width: 800px) {
+  .pageStyles {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 1rem;
+    padding: 1rem 1rem;
+    border-radius: 8px;
+  }
+
+  .cart_icon {
+    position: absolute;
+    top: 4rem;
+    right: 35px;
+  }
+
+  .side-menu {
+    display: block !important;
+  }
+
+  .side-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Start with the menu off-screen */
+    width: 250px;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+  }
+
+  .side-menu.open {
+    right: 0; /* Slide the menu in from the right */
+  }
+
   .ui_styles {
     display: flex;
     flex-direction: column;
-    margin-top: 8rem;
+    margin-top: 2rem;
+    justify-content: center;
   }
 
   .crose_btn_on_navbar {
     display: flex;
     z-index: 999;
+    font-size: 1.6rem;
   }
 
   .products_nthchild {
@@ -1751,20 +1799,4 @@ figure {
   .signup_btn {
     display: none;
   }
-}
-
-.side-menu {
-  position: fixed;
-  top: 0;
-  right: -300px; /* Start with the menu off-screen */
-  width: 300px;
-  height: 100%;
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
-  transition: right 0.3s ease-in-out;
-}
-
-.side-menu.open {
-  right: 0; /* Slide the menu in from the right */
 }

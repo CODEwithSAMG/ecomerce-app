@@ -22,7 +22,7 @@ const Header = () => {
       </NavLink>
 
       {isMenuOpen ? (
-        <MdClose className="crose_btn_on_navbar" onClick={toggleMenu} />
+          <MdClose className="crose_btn_on_navbar" onClick={toggleMenu} />
       ) : (
         <RxHamburgerMenu className="hamburger" onClick={toggleMenu} />
       )}
