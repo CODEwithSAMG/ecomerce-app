@@ -1188,20 +1188,23 @@ figure {
 
 /* About Us page */
 .about-us-container {
-  margin-top: 10px;
   color: #333;
-  margin-bottom: 4rem;
+  background-color: #f8f9fa;
+  margin: 2rem 10rem;
+  padding: 2rem 4rem;
+  border-radius: 8px;
 }
 
 .about-us-heading {
   text-align: center;
   margin-bottom: 2rem;
+  font-size: 1.4rem;
+  color: rgb(104, 85, 224);
+  font-weight: 600;
 }
 
 .about-us-paragraph {
   line-height: 1.5;
-  font-size: 1.1rem;
-  font-weight: 500;
 }
 
 .hero-section {
@@ -1520,7 +1523,7 @@ figure {
   }
 
   .p-10 {
-    padding: 0 !important;
+    padding: 1rem;
   }
 
   .hero-heading {
@@ -1563,11 +1566,20 @@ figure {
 }
 
 @media screen and (max-width: 800px) {
+  .p-10 {
+    padding: 1rem !important;
+  }
+
+  .about-us-container {
+    margin: 1rem 1rem;
+    padding: 1rem;
+  }
+
   .pageStyles {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
     margin: 1rem;
-    padding: 1rem 1rem;
+    padding: 1rem;
     border-radius: 8px;
   }
 

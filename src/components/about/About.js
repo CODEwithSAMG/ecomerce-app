@@ -9,11 +9,11 @@ const AboutUsPage = () => {
     }, [])
 
     return (
-        <div className="about-us-container p-10">
+        <div className="about-us-container">
             <TopLoader progress={progress} setProgress={setProgress} />
 
-            <h1 className="about-us-heading">About Apna Bazza</h1>
-            <h3 className="about-us-description">Welcome to Apna Bazza, your premier destination for online shopping.</h3>
+            <p className="about-us-heading">About Apna Bazza</p>
+            <p className="about-us-description">Welcome to Apna Bazza, your premier destination for online shopping.</p>
 
             <p className='about-us-paragraph'> Established in [Year], Apna Bazza has embarked on a journey to redefine your online shopping experience. With an extensive range of top-notch products across various categories, we are committed to bringing you quality and convenience.
 
