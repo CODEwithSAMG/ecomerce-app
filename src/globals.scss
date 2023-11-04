@@ -241,7 +241,9 @@ a {
   width: 22%;
   background-color: white;
   padding: 2rem;
-  height: 32vh;
+  height: 331px;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-card {
@@ -1814,4 +1816,12 @@ figure {
   justify-content: center;
   align-items: center;
   height: 78vh;
+}
+
+.ui_dna_spinner {
+  position: "fixed";
+  height: 300;
+  top: "50%";
+  left: "50%";
+  transform: "translate(-50%, -50%)";
 }

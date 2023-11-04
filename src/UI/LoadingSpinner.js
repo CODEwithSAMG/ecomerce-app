@@ -1,11 +1,11 @@
 import { Dna, Oval } from 'react-loader-spinner';
 
-export const LoadingSpinner = () => (
-    <div style={{ position: "fixed", height: 300, top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
+export const DnaSpinner = () => (
+    <div className='ui_dna_spinner'>
         <Dna
             visible={true}
-            height="70%"
-            width="70%"
+            height="10%"
+            width="10%"
             ariaLabel="dna-loading"
             wrapperStyle={{}}
             wrapperClass="dna-wrapper"
@@ -20,10 +20,9 @@ export const CircularSpinner = () => (
         width={40}
         color="rgb(53 30 207)"
         ariaLabel='oval-loading'
-        // secondaryColor="white"
+        secondaryColor="white"
         strokeWidth={6}
-    // strokeWidthSecondary={2}
-
+        strokeWidthSecondary={5}
     />
 
 );
