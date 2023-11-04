@@ -7,7 +7,7 @@ import { AppContext } from '../../context/ProductContext';
 
 const Home = () => {
     const [productsData, setProductsData] = useState([]);
-    const [progress, setProgress] = useState(0);
+    const [progress, setProgress] = useState();
 
     const { getApiProduct, singleProduct } = useContext(AppContext);
 
@@ -24,7 +24,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchData();
-        getApiProduct()
+        getApiProduct();
     }, []);
 
     return (

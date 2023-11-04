@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { TopLoader } from '../UI/TopLoader';
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { POSTDATA } from "../auth/HTTRequests"
 import { toast, ToastContainer } from "react-toastify";
 
@@ -61,14 +60,7 @@ const ContactUs = () => {
             <ToastContainer position="top-center" />
             <h2 className='contactus_title'>Feel Free to Contact Us</h2>
 
-            <section className='contactus_container'>
-                <LazyLoadImage
-                    className='left_contact'
-                    src="contact.webp"
-                    alt="contact img"
-                />
-
-
+            <section className='contactus_container p-10'>
                 <div className='right_contact'>
                     <form>
                         <div>

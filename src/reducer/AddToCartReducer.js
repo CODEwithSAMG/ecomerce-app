@@ -5,23 +5,21 @@ const AddToCartReducer = (state, action) => {
 
             let cartProduct = { image, title, rating, price, count };
 
-            const existingProductInCart = state.cart.find((item) => item.id === id);
-
+            const existingProductInCart = state?.cart?.find((item) => {
+                console.log(item.id)
+                console.log(id)
+                return item.id === id
+            })
             if (existingProductInCart) {
                 return {
+                    cart: "hello"
+                };
+            } else {
+                return {
                     ...state,
-                    cart: state.cart.map(item =>
-                        item.id === id
-                            ? { ...item, count: item.count + count }
-                            : item
-                    )
+                    cart: [...state.cart, cartProduct]
                 };
             }
-
-            return {
-                ...state,
-                cart: [...state.cart, cartProduct]
-            };
 
         case "deleteCartItem":
             return {

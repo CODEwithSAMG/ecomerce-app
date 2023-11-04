@@ -15,7 +15,7 @@ const AboutUsPage = () => {
             <p className="about-us-heading">About Apna Bazza</p>
             <p className="about-us-description">Welcome to Apna Bazza, your premier destination for online shopping.</p>
 
-            <p className='about-us-paragraph'> Established in [Year], Apna Bazza has embarked on a journey to redefine your online shopping experience. With an extensive range of top-notch products across various categories, we are committed to bringing you quality and convenience.
+            <p className='about-us-paragraph'> Established in year 2000, Apna Bazza has embarked on a journey to redefine your online shopping experience. With an extensive range of top-notch products across various categories, we are committed to bringing you quality and convenience.
 
                 Our story revolves around your satisfaction. We understand that each purchase holds importance, and that's why our dedicated customer support team is here to ensure a seamless shopping journey. At Apna Bazza, you're not just a customer; you're part of our family.
 
@@ -33,7 +33,7 @@ const AboutUsPage = () => {
 
             <section className="brand-story">
                 <h2>Our Brand Story</h2>
-                <p>Established in [Year], Apna Bazza embarked on a journey to redefine online shopping...</p>
+                <p>Established in year 2000, Apna Bazza embarked on a journey to redefine online shopping...</p>
             </section>
 
             <section className="values-mission">

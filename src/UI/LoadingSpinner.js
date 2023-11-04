@@ -16,13 +16,13 @@ export const LoadingSpinner = () => (
 
 export const CircularSpinner = () => (
     <Oval
-        height={25}
-        width={25}
+        height={40}
+        width={40}
         color="rgb(53 30 207)"
         ariaLabel='oval-loading'
-        secondaryColor="white"
+        // secondaryColor="white"
         strokeWidth={6}
-        strokeWidthSecondary={2}
+    // strokeWidthSecondary={2}
 
     />
 

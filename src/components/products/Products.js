@@ -4,7 +4,7 @@ import { ListView, GridView } from "../../components";
 
 import { TopLoader } from '../../UI/TopLoader';
 import { BsFillGridFill, BsList } from 'react-icons/bs';
-import { LoadingSpinner } from '../../UI/LoadingSpinner';
+import { LoadingSpinner, CircularSpinner } from '../../UI/LoadingSpinner';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -45,8 +45,8 @@ const Products = () => {
 
     if (products.length === 0) {
         return (
-            <div style={{ height: "84vh" }}>
-                <LoadingSpinner />
+            <div className="loading_spinner">
+                <CircularSpinner />
             </div>
         );
     }
