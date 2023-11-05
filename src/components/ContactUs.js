@@ -53,15 +53,15 @@ const ContactUs = () => {
         setProgress(100)
     }, [])
 
-
     return (
         <>
             <TopLoader progress={progress} setProgress={setProgress} />
             <ToastContainer position="top-center" />
-            <h2 className='contactus_title'>Feel Free to Contact Us</h2>
 
             <section className='contactus_container p-10'>
                 <div className='right_contact'>
+                    <h2 className='contactus_title'>Feel Free to Contact Us</h2>
+
                     <form>
                         <div>
                             <label>First Name:</label>
@@ -132,7 +132,7 @@ const ContactUs = () => {
                         </div>
                     </form>
 
-                    <div>
+                    <div style={{ textAlign: "center" }}>
                         <button type='submit' onClick={handleSubmit}>Submit</button>
                     </div>
                 </div>
