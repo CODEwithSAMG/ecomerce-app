@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { MdShoppingCart, MdClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Menu } from "../../Menu";
-// import "./Header.css"; // Import your custom CSS file for styling
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +21,7 @@ const Header = () => {
       </NavLink>
 
       {isMenuOpen ? (
-          <MdClose className="crose_btn_on_navbar" onClick={toggleMenu} />
+        <MdClose className="crose_btn_on_navbar" onClick={toggleMenu} />
       ) : (
         <RxHamburgerMenu className="hamburger" onClick={toggleMenu} />
       )}

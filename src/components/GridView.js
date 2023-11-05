@@ -1,4 +1,3 @@
-import React from 'react';
 import { Cards } from './index';
 
 const GridView = ({ products }) => {

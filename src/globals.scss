@@ -237,13 +237,9 @@ a {
 }
 
 .product {
-  display: flex;
-  width: 22%;
-  background-color: white;
+  width: 17%;
   padding: 2rem;
   height: 331px;
-  justify-content: center;
-  align-items: center;
 }
 
 .product-card {
@@ -273,31 +269,12 @@ a {
   background-color: #dcdcdc;
   border-radius: 15px;
   position: relative;
-  height: 60vh;
+  height: 450px;
+  margin-top: 20px;
 }
 
 .hero-banner-container .beats-solo {
   font-size: 20px;
-}
-
-.hero-banner-container button {
-  border-radius: 15px;
-  padding: 10px 16px;
-  background-color: #f02d34;
-  color: white;
-  border: none;
-  margin-top: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  z-index: 10000 !important;
-  // transform: scale(1);
-
-  &:hover {
-    background-color: #dd191f;
-    transform: scale(1.1, 1.1);
-    transition: all 400ms ease-in-out;
-  }
 }
 
 .hero-banner-container h1 {
@@ -307,10 +284,9 @@ a {
 
 .hero-banner-image {
   position: absolute !important;
-  top: 11px;
+  top: -101px;
   width: 500px;
-  height: 500px;
-  right: 5rem;
+  left: 40%;
 }
 
 .desc {
@@ -862,9 +838,12 @@ a {
 }
 
 .right_contact {
+  max-width: 32rem;
   width: 100%;
-  border-radius: 10px;
-  backdrop-filter: blur(50px);
+  margin: auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 4px;
 
   form {
     div {
@@ -1055,7 +1034,6 @@ figure {
   box-shadow: 10px 10px 20px rgba(39, 5, 255, 0.2);
   transition: 0.4s;
   width: 100%;
-  margin-top: 2rem !important;
 
   &:hover {
     background-color: rgb(118, 107, 192);
@@ -1071,57 +1049,53 @@ figure {
 }
 
 .login_wrapper {
-  max-width: 65rem;
-  margin: auto;
-  margin-top: 6rem;
-  margin-bottom: 5rem;
-  display: flex;
-  min-height: 67vh;
+  max-width: 25rem;
+  margin: 2rem auto;
+  margin-bottom: 3rem;
 
   .login_form {
-    width: 50%;
-    padding: 4rem;
+    width: 100%;
+    padding: 2rem;
     border-radius: 10px;
-    backdrop-filter: blur(120px);
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    // display: none;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  }
 
-    .login_title {
-      font-size: 1.8rem;
-      line-height: 2rem;
-      --tw-text-opacity: 1;
-      color: rgb(55 65 81 / var(--tw-text-opacity));
-      font-weight: 600;
-      text-align: center;
+  .login_title {
+    font-size: 1.8rem;
+    line-height: 2rem;
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity));
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .input_field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid gainsboro;
     }
+  }
 
-    .input_field {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
+  .mt_4 {
+    margin-top: 1rem;
+  }
 
-      input {
-        padding: 15px;
-        border: none;
-        outline: none;
-        box-shadow: 2px 4px 10px gray;
-        border-radius: 2px;
-      }
-    }
+  div a {
+    color: rgb(36, 33, 219);
+    font-weight: 500;
+    font-size: 15px;
+  }
 
-    .mt_4 {
-      margin-top: 1rem;
-    }
-
-    div a {
-      color: rgb(36, 33, 219);
-      font-weight: 500;
-      text-decoration: underline;
-    }
-
-    p {
-      text-align: center;
-      margin: 0.4rem;
-    }
+  p {
+    text-align: center;
+    margin: 0.4rem;
   }
 }
 
@@ -1137,9 +1111,11 @@ figure {
   transform: scale(1, 1);
   transition: 700ms ease-in-out;
   display: flex;
-  flex-direction: column;
   border-radius: 6px;
-  gap: 6px;
+  background-color: white;
+  height: 200px;
+  align-items: center;
+  margin-bottom: 10px;
 
   &:hover {
     transform: scale(1.1, 1.1);

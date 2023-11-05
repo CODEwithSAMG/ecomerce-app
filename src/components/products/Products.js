@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { AppContext } from '../../context/ProductContext';
 import { ListView, GridView } from "../../components";
 
 import { TopLoader } from '../../UI/TopLoader';
 import { BsFillGridFill, BsList } from 'react-icons/bs';
-import { LoadingSpinner, CircularSpinner } from '../../UI/LoadingSpinner';
+import { CircularSpinner } from '../../UI/LoadingSpinner';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
