@@ -31,13 +31,14 @@ const ContactUs = () => {
 
         try {
             const response = await POSTDATA("/contact", form)
+
             if (response) {
                 toast.success("form succesfully submited");
             } else {
-                console.error("Failed to submit contact form");
+                toast.error("Failed to submit contact form");
             }
         } catch (error) {
-            console.error("An error occurred:", error);
+            toast.error("Something went wrong", error);
         }
 
         setForm({
@@ -57,6 +58,8 @@ const ContactUs = () => {
         <>
             <TopLoader progress={progress} setProgress={setProgress} />
             <ToastContainer position="top-center" />
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3476.263000233578!2d76.94601037608054!3d29.391861449193815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ddbbbde2535cb%3A0xbd73390676c652a9!2sAggarsain%20Colony%2C%20Panipat%2C%20Haryana%20132108!5e0!3m2!1sen!2sin!4v1699253421243!5m2!1sen!2sin" width="100%" height="450" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 
             <section className='contactus_container p-10'>
                 <div className='right_contact'>
