@@ -3,9 +3,12 @@ import { NavLink } from "react-router-dom";
 import { MdShoppingCart, MdClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Menu } from "../../Menu";
+import { useCartContext } from "../../context/AddToCartContext"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { cart } = useCartContext()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -47,7 +50,7 @@ const Header = () => {
 
         <NavLink to="/additem" className="cart_icon">
           <MdShoppingCart />
-          <span>2</span>
+          <span>{cart.length}</span>
         </NavLink>
       </div>
     </header>

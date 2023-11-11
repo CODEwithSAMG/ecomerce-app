@@ -2,13 +2,9 @@ import { useCartContext } from "../../context/AddToCartContext"
 import { NavLink } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import CartItem from "./CartItem";
-// import axios from "axios";
 
 const AddItem = () => {
     const { cart, DeleteCartItem, clearCartItem } = useCartContext();
-    // console.log(typeof cart, "cart")
-    // console.log(cart, "cart")
-
     const makePayment = async (e) => {
         e.preventDefault();
 
@@ -46,15 +42,14 @@ const AddItem = () => {
         }
     };
 
-
     return (
         <>
-            {cart && cart.length > 0 ?
+            {cart && cart?.length > 0 ?
                 <>
                     <section style={{ marginBottom: "12rem" }} className="p-10">
                         <div style={{ display: "flex", gap: 40, flexDirection: "column" }}>
                             {cart?.map((curElem, index) => {
-                                return <CartItem key={index} {...curElem} DeleteCartItem={DeleteCartItem} />
+                                return <CartItem id={index} key={index} {...curElem} DeleteCartItem={DeleteCartItem} />
                             })}
 
                             {cart.length > 0 && <div className="bg_color_white add_item_second_container">
@@ -63,12 +58,9 @@ const AddItem = () => {
                                 </div>
 
                                 <hr />
-
-                                <NavLink
-                                // to="/payment"
-                                >
-                                    <button onClick={makePayment}>Checkout</button>
-                                </NavLink>
+                                <button
+                                    onClick={makePayment}
+                                >Checkout</button>
                             </div>}
                         </div>
 

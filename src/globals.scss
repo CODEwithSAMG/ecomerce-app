@@ -55,6 +55,7 @@ a {
   z-index: 100;
   padding: 1.2rem 10rem;
   background-color: #eaeded;
+  margin-bottom: 2rem;
 }
 
 .navbar h4 {
@@ -1058,6 +1059,7 @@ figure {
 
   .login_form {
     width: 92%;
+    margin: auto;
     padding: 2rem;
     border-radius: 10px;
     background-color: white;
@@ -1480,7 +1482,7 @@ figure {
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
   .w-60percent {
     width: 100%;
     padding: 1rem;
@@ -1527,6 +1529,13 @@ figure {
     font-size: 14px;
     font-weight: bold;
   }
+
+  // .login_wrapper .login_form {
+  //   width: 50%;
+  //   margin: auto;
+  //   border-radius: 10px;
+  //   background-color: none;
+  // }
 }
 
 @media screen and (max-width: 800px) {

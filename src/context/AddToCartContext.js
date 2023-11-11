@@ -3,29 +3,30 @@ import reducer from "../reducer/AddToCartReducer";
 
 const CartContext = createContext();
 
-var getLocalStorageData;
-const getLocalCartData = () => {
-    getLocalStorageData = localStorage.getItem("localcart")
+let getLocalStorageData;
 
-    if (getLocalStorageData === null) {
-        return [];
-    } else if (getLocalStorageData === []) {
+const getLocalCartData = () => {
+    const getLocalStorageData = localStorage.getItem("localcart");
+
+    // Check if getLocalStorageData is null or an empty array
+    if (!getLocalStorageData || getLocalStorageData === "[]") {
         return [];
     }
-    else {
-        return JSON.parse(getLocalStorageData)
-    }
-}
+
+    // Parse and return the data
+    return JSON.parse(getLocalStorageData);
+};
 
 const initialState = {
     cart: getLocalCartData(),
 };
-
+// console.log(initialState.cart)
 const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const AddToCart = (image, title, rating, description, price, id, singleProduct, count) => {
-        dispatch({ type: "ADD_TO_CART", payload: { image, title, rating, description, price, id, singleProduct, count } });
+    const AddToCart = () => {
+        dispatch({ type: "ADD_TO_CART", payload: { id: "id" } });
+        // console.log(id)
     }
 
     const DeleteCartItem = (id) => {

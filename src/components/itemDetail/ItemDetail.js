@@ -11,7 +11,7 @@ import { TopLoader } from "../../UI/TopLoader";
 
 const ItemDetail = () => {
     const [progress, setProgress] = useState(0)
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     const [loading, setloading] = useState(false);
     const { getSingleProduct, singleProduct } = useContext(AppContext);
     const { AddToCart } = useCartContext();
@@ -24,7 +24,7 @@ const ItemDetail = () => {
     )
 
     const handleDecreaseCount = () => {
-        if (count > 0) {
+        if (count > 1) {
             setCount(count - 1)
         }
     }
@@ -37,15 +37,13 @@ const ItemDetail = () => {
     useEffect(() => {
         setloading(true);
     }, [])
+
+
     if (loading) {
         return <div style={{ height: "400px" }}>
             KLfjdkl
         </div>
-
-
     }
-
-    console.log(loading)
 
     return (
         <section className='product-detail-container p-10'>
