@@ -5,6 +5,7 @@ import CartItem from "./CartItem";
 
 const AddItem = () => {
     const { cart, DeleteCartItem, clearCartItem } = useCartContext();
+
     const makePayment = async (e) => {
         e.preventDefault();
 
@@ -27,12 +28,10 @@ const AddItem = () => {
             })
 
             const session = await response.json();
-            console.log("fkdljslkf", session)
 
             const result = await stripe.redirectToCheckout({
                 sessionId: session.id
             });
-            console.log("fkdljslkf", result)
 
             if (result.error) {
                 console.error(result.error);
@@ -41,7 +40,7 @@ const AddItem = () => {
             console.error("Error during payment:", error);
         }
     };
-
+    
     return (
         <>
             {cart && cart?.length > 0 ?

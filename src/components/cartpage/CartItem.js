@@ -1,7 +1,7 @@
 const CartItem = ({ image, title, price, count, DeleteCartItem, id, }) => {
 
     let subTOtoal = [price * count]
-    // console.log(id);
+
     return (
         <div key={id} className="additem_container bg_color_white">
             <figure>

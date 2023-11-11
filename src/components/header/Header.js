@@ -50,7 +50,7 @@ const Header = () => {
 
         <NavLink to="/additem" className="cart_icon">
           <MdShoppingCart />
-          <span>{cart.length}</span>
+          <span>{cart?.length}</span>
         </NavLink>
       </div>
     </header>

@@ -1,19 +1,13 @@
 const AddToCartReducer = (state, action) => {
     switch (action.type) {
         case "ADD_TO_CART":
-            let { image, title, rating, price, count, id } = action.payload;
+            const { image, title, rating, price, count, id } = action.payload;
+            const cartProduct = { id, image, title, rating, price, count };
 
-            let cartProduct = { image, title, rating, price, count };
+            const existingProductInCart = state.cart.find((item) => item.id === id);
 
-            const existingProductInCart = state?.cart?.find((item) => {
-                console.log(item.id)
-                console.log(id)
-                return item.id === id
-            })
             if (existingProductInCart) {
-                return {
-                    cart: "hello"
-                };
+                return state;
             } else {
                 return {
                     ...state,
@@ -22,11 +16,10 @@ const AddToCartReducer = (state, action) => {
             }
 
         case "deleteCartItem":
+            const updatedCart = state.cart.filter((item) => item.id !== action.payload);
             return {
                 ...state,
-                cart: state.cart.filter((curVal) => {
-                    return curVal.id !== action.payload;
-                })
+                cart: updatedCart
             };
 
         case "CLEAR_LOCAL_STORAGE_DATA":
