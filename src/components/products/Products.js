@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from 'react';
 import { AppContext } from '../../context/ProductContext';
 import { ListView, GridView } from "../../components";
-
 import { TopLoader } from '../../UI/TopLoader';
 import { BsFillGridFill, BsList } from 'react-icons/bs';
 import { CircularSpinner } from '../../UI/LoadingSpinner';
+import axios from 'axios';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -24,23 +24,22 @@ const Products = () => {
         setSelectedSortOption(e.target.value);
     };
 
-    const fetchData = async (api) => {
+    const fetchData = async () => {
         try {
-            const response = await fetch(api);
-            const parsedData = await response.json();
-            setProducts(parsedData);
+            const response = await axios.get("https://fakestoreapi.com/products");
+            setProducts(response.data);
             setProgress(100);
         } catch (error) {
-            setError(error);
+            setError("Error fetching products");
         }
     };
 
     useEffect(() => {
-        fetchData("https://fakestoreapi.com/products");
+        fetchData();
     }, []);
 
     if (error) {
-        return <span>Error: {error.message}</span>;
+        return <div style={{ height: "70vh", backgroundColor: "black", color: "white", display: "flex", justifyContent: "center", alignItems: "center" }}>{error}</div>;
     }
 
     if (products.length === 0) {

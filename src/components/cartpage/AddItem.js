@@ -1,9 +1,51 @@
 import { useCartContext } from "../../context/AddToCartContext"
 import { NavLink } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
 import CartItem from "./CartItem";
+// import axios from "axios";
 
 const AddItem = () => {
     const { cart, DeleteCartItem, clearCartItem } = useCartContext();
+    // console.log(typeof cart, "cart")
+    // console.log(cart, "cart")
+
+    const makePayment = async (e) => {
+        e.preventDefault();
+
+        const stripe = await loadStripe("pk_test_51O9ijUSGC39u197JPzuFrS8tvZAkT4AwiXPBeSxg5ZiWhHLf7MaTlDLjPpJoZJcPXvCrIIvsJvwk0OPB0l07lVKf00JEP3LaZw");
+
+        const lineItems = cart.map((item) => ({
+            price: item.price * 100, // Use the Price ID here
+            quantity: item.count * 100,
+        }));
+
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+
+        try {
+            const response = await fetch("http://localhost:5000/checkout-session", {
+                method: 'post',
+                body: JSON.stringify(lineItems),
+                headers: headers
+            })
+
+            const session = await response.json();
+            console.log("fkdljslkf", session)
+
+            const result = await stripe.redirectToCheckout({
+                sessionId: session.id
+            });
+            console.log("fkdljslkf", result)
+
+            if (result.error) {
+                console.error(result.error);
+            }
+        } catch (error) {
+            console.error("Error during payment:", error);
+        }
+    };
+
 
     return (
         <>
@@ -20,7 +62,13 @@ const AddItem = () => {
                                     Subtotal: {cart.count}
                                 </div>
 
+                                <hr />
 
+                                <NavLink
+                                // to="/payment"
+                                >
+                                    <button onClick={makePayment}>Checkout</button>
+                                </NavLink>
                             </div>}
                         </div>
 
@@ -37,7 +85,8 @@ const AddItem = () => {
                             Clear Cart
                         </button>
                     </div>
-                    }</> : <div className="empty_cart bg_color_white">
+                    }
+                </> : <div className="empty_cart bg_color_white">
                     <img src="empty-cart.jpg" /></div>}
         </>
     )

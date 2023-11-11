@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import ReCAPTCHA from "react-google-recaptcha";
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 import "react-toastify/dist/ReactToastify.css";
 import "./auth.css"
@@ -13,63 +14,49 @@ const Login = () => {
 
     const [loginData, setLoginData] = useState({
         email: "",
-        password: ""
+        password: "",
     });
-    const [LoginButton, setLoginButton] = useState();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
 
         setLoginData((prevState) => ({
             ...prevState,
-            [name]: value
+            [name]: value,
         }));
     };
 
+
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
             const response = await fetch("http://localhost:5000/login", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify(loginData)
-            })
-            // console.log(response)
-            // if (response) {
+                body: JSON.stringify(loginData),
+            });
 
-            //     toast.success("Logged in successfully!");
-            //     setTimeout(() => {
-            //         Navigate('/')
-            //     }, 3000)
-            //     console.log("if statment")
-            // }
             let token;
-            if (response.ok) {
+            if (response.statusText === "OK") {
                 const data = await response.json();
                 token = data.token;
-                console.log(token, "res");
-            }
-            console.log(token)
-            if (token) {
-                navigate('/'); // If using React Router
-                console.log("fjdklj")
-            } else {
-                toast.success("Logged in successfully!");
-                // Redirect the user to a dashboard or home page after successful login.
-                // history.push('/dashboard'); // If using React Router
-                // Navigate('/dashboard'); // If using React Query Navigator
             }
 
+
+            if (token) {
+                localStorage.setItem("token", token)
+                toast.success("Logged in successfully!");
+                navigate("/")
+                // }
+            } else {
+                toast.error("invalid credentials")
+            }
         } catch (error) {
             toast.error("Something went wrong");
         }
     };
-
-    // if (token) {
-    //     setLoginButton("false")
-    // }
 
     return (
         <div className="login_wrapper">
@@ -77,61 +64,70 @@ const Login = () => {
 
             <ToastContainer />
 
-            <div>
+            <form className="login_form">
+                <h2 className="login_title"> Apna Bazza</h2>
+                <p> Welcome Back!</p>
 
-                <form className="login_form">
-                    <h2 className="login_title"> Apna Bazza</h2>
-                    <p> Welcome Back!</p>
-
-                    <div style={{ display: 'flex', justifyContent: "space-between", marginTop: "1rem" }}>
-                        <span>-------</span>
-                        Login With Email
-                        <span>-------</span>
-                    </div>
-
-                    <div className="input_field mt_4">
-                        <label htmlFor="">Email Address:</label>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Enter Email Adress"
-                            onChange={handleChange}
-                            value={loginData.email}
-                            required
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <GoogleOAuthProvider clientId="848713887451-2hv3ch1sp6e0qreoq6ir6pukasck1git.apps.googleusercontent.com">
+                        <GoogleLogin
+                            onSuccess={credentialResponse => {
+                                console.log(credentialResponse);
+                            }}
+                            onError={() => {
+                                console.log('Login Failed');
+                            }}
                         />
-                    </div>
+                    </GoogleOAuthProvider>
+                </div>
 
-                    <div className="input_field mt_4">
-                        <label htmlFor="">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            onChange={handleChange}
-                            value={loginData.password}
-                            required
-                        />
-                    </div>
+                <div style={{ display: 'flex', justifyContent: "space-between", marginTop: "1rem" }}>
+                    <span>-----</span>
+                    Or Login With Email
+                    <span>-----</span>
+                </div>
 
-                    <div style={{ margin: "1.3rem 0" }}>
-                        <ReCAPTCHA
-                            // theme="dark"
-                            sitekey={TEST_SITE_KEY}
-                        />
-                    </div>
+                <div className="input_field mt_4">
+                    <label htmlFor="">Email Address:</label>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter Email Adress"
+                        onChange={handleChange}
+                        value={loginData.email}
+                        required
+                    />
+                </div>
 
-                    <button className="isloading_spinner mt_4" onClick={handleSubmit}>
-                        Login
-                    </button>
+                <div className="input_field mt_4">
+                    <label htmlFor="">Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter your Password"
+                        onChange={handleChange}
+                        value={loginData.password}
+                        required
+                    />
+                </div>
 
-                    <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 25 }}>
-                        <span>-------</span>
-                        <Link to="/signup">Or Sign up</Link>
-                        <span>-------</span>
-                    </div>
+                <div style={{ margin: "1.3rem 0" }}>
+                    <ReCAPTCHA
+                        // theme="dark"
+                        sitekey={TEST_SITE_KEY}
+                    />
+                </div>
 
-                </form>
-            </div>
+                <button className="isloading_spinner mt_4" onClick={handleSubmit}>
+                    Login
+                </button>
 
+
+                <div className="already_account">
+                    <p>Dont have account?</p>
+                    <Link to="/signup"><p>SIGN UP</p></Link>
+                </div>
+            </form>
         </div>
     );
 };
