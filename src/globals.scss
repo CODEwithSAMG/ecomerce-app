@@ -1357,7 +1357,7 @@ figure {
   top: 86px;
   right: 10rem;
   width: 33.5%;
-  height: 320px;
+  height: 36vh;
 }
 
 .qty_btn {
@@ -1604,10 +1604,10 @@ select > option {
 
 .add_item_container {
   display: flex;
-  gap: 10px;
   flex-direction: column;
-  margin-bottom: 7%;
+  gap: 10px;
   width: 66%;
+  margin-bottom: 15vh;
 }
 
 .large_device_totaldetials {
@@ -1703,14 +1703,6 @@ select > option {
 
   .additem_wrapper {
     display: none;
-  }
-
-  .add_item_second_container {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 40px;
-    bottom: -226px;
   }
 
   .w-60percent {
