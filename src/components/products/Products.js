@@ -26,6 +26,11 @@ const Products = () => {
 
     const fetchData = async () => {
         try {
+            //1.get method by fetch method also
+            // const response = await fetch("https://fakestoreapi.com/products");
+            // const parsedData = await response.json()
+            // console.log(parsedData)
+
             const response = await axios.get("https://fakestoreapi.com/products");
             setProducts(response.data);
             setProgress(100);
@@ -44,7 +49,7 @@ const Products = () => {
 
     if (products.length === 0) {
         return (
-            <div className="loading_spinner">
+            <div className="product_page_spinner">
                 <CircularSpinner />
             </div>
         );
@@ -89,7 +94,7 @@ const Products = () => {
             <TopLoader progress={progress} setProgress={setProgress} />
 
             <section className='products_nthchild'>
-                <input name="text" type="text" placeholder='Search' onChange={updateFilterValues} value={text} />
+                <input name="text" type="text" placeholder='Search Products...' onChange={updateFilterValues} value={text} />
 
                 {categoryData?.map((val, key) => {
                     return (
@@ -114,7 +119,7 @@ const Products = () => {
                     <p>{filteredProducts.length} Products Available</p>
 
                     <div>
-                        <select style={{ padding: 6, fontSize: "1rem", fontWeight: 500 }} value={selectedSortOption} onChange={handleSortChange}>
+                        <select className='select_input' value={selectedSortOption} onChange={handleSortChange}>
                             <option value='sort to high'>Price (lowest)</option>
                             <option value='sort to low'>Price (highest)</option>
                             <option value='a to z'>A to Z</option>

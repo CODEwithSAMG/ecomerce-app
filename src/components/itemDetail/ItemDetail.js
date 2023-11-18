@@ -87,38 +87,40 @@ const ItemDetail = () => {
                     </div>
 
                     <div className='product-data-warranty'>
-                        <div className='product-warranty-icon'>
+                        <div className='product-warranty-data'>
                             <TbTruckDelivery className='warranty-icon' />
 
                             <p>Free Delivery</p>
                         </div>
 
-                        <div className='product-warranty-icon'>
+                        <div className='product-warranty-data'>
                             <TbReplace className='warranty-icon' />
 
                             <p>30 Days Replacement</p>
                         </div>
-                        <div className='product-warranty-icon'>
+                        <div className='product-warranty-data'>
                             <TbTruckDelivery className='warranty-icon' />
 
                             <p>Delivered</p>
                         </div>
-                        <div className='product-warranty-icon'>
+                        <div className='product-warranty-data'>
                             <MdSecurity className='warranty-icon' />
 
                             <p>2 Years Warranty</p>
                         </div>
                     </div>
 
-                    <NavLink to={"/additem"} onClick={() => AddToCart(image, title, rating, description, price, id, singleProduct, count)}>
-                        <button className='add-to-cart'>
-                            Add To Cart
-                        </button>
-                    </NavLink>
+                    <div className='item_detail_btns'>
+                        <NavLink to={"/additem"} onClick={() => AddToCart(image, title, rating, description, price, id, singleProduct, count)}>
+                            <button className='add-to-cart'>
+                                Add To Cart
+                            </button>
+                        </NavLink>
 
-                    <button className='buy-now'>
-                        Buy Now
-                    </button>
+                        <button className='buy-now'>
+                            Buy Now
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>

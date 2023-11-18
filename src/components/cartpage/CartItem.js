@@ -15,7 +15,7 @@ const CartItem = ({ image, title, price, count, DeleteCartItem, id, }) => {
 
                 61% off Deal
 
-                <div >
+                <div className="_1WpvJ7">
                     $ {price}
                 </div>
                 <div >
