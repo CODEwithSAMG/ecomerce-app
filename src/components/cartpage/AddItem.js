@@ -1,9 +1,11 @@
+import { useState, useEffect } from "react";
 import { useCartContext } from "../../context/AddToCartContext"
 import { NavLink } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import CartItem from "./CartItem";
 
 const AddItem = () => {
+    const [totalAmount, setTotalAmount] = useState(0);
     const { cart, DeleteCartItem, clearCartItem } = useCartContext();
 
     const makePayment = async (e) => {
@@ -40,39 +42,85 @@ const AddItem = () => {
             console.error("Error during payment:", error);
         }
     };
-    
+
+    useEffect(() => {
+        let storageData = JSON.parse(localStorage.getItem("localcart"));
+
+        if (Array.isArray(storageData) && storageData.length > 0) {
+            const newTotalAmount = storageData.reduce((total, product) => {
+                return total + product.price * product.count;
+            }, 0);
+
+            setTotalAmount(newTotalAmount);
+        }
+    }, [cart, totalAmount]);
+
     return (
         <>
             {cart && cart?.length > 0 ?
                 <>
-                    <section style={{ marginBottom: "12rem" }} className="p-10">
-                        <div style={{ display: "flex", gap: 40, flexDirection: "column" }}>
+                    <section className="add_item_wrapper">
+                        <div className="add_item_container">
                             {cart?.map((curElem, index) => {
                                 return <CartItem id={index} key={index} {...curElem} DeleteCartItem={DeleteCartItem} />
                             })}
-
-                            {cart.length > 0 && <div className="bg_color_white add_item_second_container">
-                                <div>
-                                    Subtotal: {cart.count}
-                                </div>
-
-                                <hr />
-                                <button
-                                    onClick={makePayment}
-                                >Checkout</button>
-                            </div>}
                         </div>
 
+                        <>
+                            {cart.length > 0 && <div className="bg_color_white add_item_second_container large_device_totaldetials">
+                                <div className="hello">
+                                    PRICE DETAILS
+                                </div>
+
+                                <div className="final_item_details">
+
+                                    <div className="">
+                                        <p>Initial Price</p>
+                                        <p className="_1WpvJ7">₹ 20000</p>
+                                    </div>
+
+                                    <div>
+                                        <p>Discount</p>
+                                        <p>-14000</p>
+                                    </div>
+
+                                    <div>
+                                        <p>Delivery Charges</p>
+                                        <p>-180 Free</p>
+                                    </div>
+
+                                    <div>
+                                        <p>Total Amount</p>
+                                        <p>$ {totalAmount}</p>
+                                    </div>
+                                </div>
+
+                                <button className="place_order_btn" onClick={makePayment}>Place Order</button>
+
+                            </div>}
+
+
+                            <div className="sm_device_totaldetials">
+                                <div>
+                                    <p>Total Price: </p>
+                                    <p className="_1WpvJ7">{totalAmount}</p>
+                                </div>
+
+                                <button className="place_order_btn" onClick={makePayment}>Place Order</button>
+
+                            </div>
+                        </>
                     </section>
+
                     {cart?.length > 0 && <div className="additem_wrapper">
                         <NavLink to={"/products"}>
-                            <button>
+                            <button className="continue_shopping_btn">
                                 Continue Shopping
                             </button>
                         </NavLink>
 
 
-                        <button onClick={clearCartItem}>
+                        <button className="clear_cart_btn" onClick={clearCartItem}>
                             Clear Cart
                         </button>
                     </div>
